@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/circular-std@1.0.0/dist/index.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/circular-std@1.0.0/dist/index.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/@mdi/font@3.7.95/css/materialdesignicons.min.css" rel="stylesheet">
+    {% for css in manifest["css"] %}
+      <link rel="stylesheet" type="text/css" href="{{ root }}{{ css }}"/>
+    {% endfor %}
+  </head>
+  <body>
+    <script src="{{ root }}a.js"></script>
+    <div id="react-content"></div>
+    {% for js in manifest["js"] %}
+      <script src="{{ root }}{{ js }}"></script>
+    {% endfor %}
+  </body>
+</html>

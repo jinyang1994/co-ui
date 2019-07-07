@@ -1,0 +1,169 @@
+@import "~@theme/variables";
+
+@top: 100px;
+
+.menu {
+  position: absolute;
+  top: @top;
+  left: 0;
+  bottom: -@top;
+  z-index: 100;
+
+  ul, li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .container {
+    height: 100%;
+    background: #fff;
+    border-right: 1px solid @border-color;
+    overflow: auto;
+    padding-bottom: @top + 10px;
+
+
+    > .item {
+      margin-top: 4px;
+      margin-bottom: 8px;
+      font-size: 14px;
+
+      > a {
+        padding-left: 40px;
+        padding-right: 16px;
+      }
+    }
+
+    > .submenu {
+      > .title {
+        margin-top: 4px;
+        margin-bottom: 8px;
+        padding-left: 40px;
+        padding-right: 16px;
+        line-height: 40px;
+        height: 40px;
+        font-size: 14px;
+        font-weight: normal;
+      }
+
+      .group {
+        > .title {
+          padding: 8px 16px 8px 56px;
+          font-size: 14px;
+          line-height: 1.5;
+          color: rgba(0, 0, 0, .45);
+        }
+
+        > .list {
+          > .item {
+            margin-top: 4px;
+            margin-bottom: 8px;
+            font-size: 14px;
+
+            > a {
+              padding-left: 80px;
+              padding-right: 16px;
+            }
+
+            .subtitle {
+              font-size: 12px;
+              opacity: .67;
+              margin-left: 6px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .switch {
+    display: none;
+  }
+
+  .mask {
+    display: none;
+  }
+
+  a {
+    display: block;
+    line-height: 40px;
+    height: 40px;
+    text-decoration: none;
+    color: #314659;
+    transition: color .3s, background .3s;
+
+    &:hover {
+      color: @active-color;
+    }
+
+    &:active {
+      background: @active-bg;
+    }
+
+    &.active {
+      color: @active-color;
+      background: @active-bg;
+    }
+  }
+
+  @media (min-width: @screen-sm-min) {
+    &.fixed {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+    }
+  }
+
+  @media (max-width: @screen-xs-max) {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    transition: left .25s;
+
+    .container {
+      position: relative;
+      z-index: 60;
+      border-right: none;
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+    }
+
+    &.opened {
+      left: 0;
+      border-right: 1px solid @border-color;
+
+      .mask {
+        height: 100%;
+        opacity: .3;
+        transition: height 0s, opacity .25s;
+      }
+    }
+
+    .switch {
+      display: block;
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 70;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
+      outline: none;
+    }
+
+    .mask {
+      content: '';
+      display: block;
+      position: fixed;
+      z-index: 50;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 0;
+      background: #000;
+      opacity: 0;
+      transition: height 0s ease 0.3s, opacity .25s;
+    }
+  }
+}
