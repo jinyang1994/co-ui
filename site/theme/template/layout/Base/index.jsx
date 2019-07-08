@@ -20,11 +20,9 @@ function Layout(props) {
 
   return (
     <IntlProvider locale={locale.locale} messages={locale.messages}>
-      <div id="layout">
+      <div>
         <Header {...props} />
-        <div id="main">
-          {children}
-        </div>
+        {children}
         <Footer {...props} />
       </div>
     </IntlProvider>
