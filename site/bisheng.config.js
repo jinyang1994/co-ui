@@ -22,7 +22,7 @@ module.exports = {
   },
   webpackConfig(config) {
     config.resolve.alias = {
-      'co-ui': path.join(process.cwd(), 'components'),
+      'co-ui': path.join(process.cwd(), 'index.js'),
       '@examples': path.join(process.cwd(), 'site/examples'),
       '@theme': path.join(process.cwd(), 'site/theme'),
     };
