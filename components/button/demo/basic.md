@@ -12,15 +12,14 @@ title:
 
 ## en-US
 
-Test button   
-123123123
+Default button   
 
 ```jsx
 import { Button } from 'co-ui';
 
 ReactDOM.render(
   <div className="example">
-    <Button>Button</Button>
+    <Button onClick={() => window.alert(123)}>Default</Button>
   </div>,
   mountNode,
 );

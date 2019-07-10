@@ -1,0 +1,5 @@
+_site
+build
+docs
+site
+components/**/*.md
