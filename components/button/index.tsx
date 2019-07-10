@@ -4,7 +4,7 @@ function Button(props: React.HTMLAttributes<HTMLButtonElement>) {
   const { children, ...btnProps } = props;
 
   return (
-    <button {...btnProps}>{children}</button>
+    <button className="co-button" {...btnProps}>{children}</button>
   );
 }
 
