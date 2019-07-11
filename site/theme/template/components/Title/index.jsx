@@ -1,9 +1,16 @@
 import React from 'react';
+import DocumentTitle from 'react-document-title';
 import styles from './styles.module.less';
 
-function Title({ children }) {
+function Title({ meta }) {
+  let title = meta.title;
+
+  if (meta.subtitle) title += ` ${meta.subtitle}`;
+
   return (
-    <h1 className={styles.title}>{children}</h1>
+    <DocumentTitle title={title + ' - Concise UI'}>
+      <h1 className={styles.title}>{title}</h1>
+    </DocumentTitle>
   );
 }
 

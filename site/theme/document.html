@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A starting point for your next project">
+    <meta name="keywords" content="react, component, ui, front-end, framework, components">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/circular-std@1.0.0/dist/index.min.css" rel="stylesheet">
@@ -10,12 +12,22 @@
     {% for css in manifest["css"] %}
       <link rel="stylesheet" type="text/css" href="{{ root }}{{ css }}"/>
     {% endfor %}
+    <title>Concise UI - A starting point for your next project</title>
   </head>
   <body>
-    <script src="{{ root }}a.js"></script>
     <div id="react-content"></div>
     {% for js in manifest["js"] %}
       <script src="{{ root }}{{ js }}"></script>
     {% endfor %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128865104-1"></script>
+    <script>
+      if (!location.port) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-128865104-1');
+      }
+    </script>
   </body>
 </html>

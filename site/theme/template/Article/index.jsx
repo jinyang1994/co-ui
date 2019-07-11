@@ -9,7 +9,7 @@ function Main({ utils, introduce }) {
 
   return (
     <>
-      <Title>{meta.title}</Title>
+      <Title meta={meta} />
       <Markdown>
         {!!description && utils.toReactComponent(description)}
         {!!content && utils.toReactComponent(content)}
