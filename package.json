@@ -28,6 +28,7 @@
   "scripts": {
     "start": "NODE_ENV=development bisheng start -c ./site/bisheng.config.js",
     "site": "rm -rf ./_site && mkdir ./_site && bisheng build -c ./site/bisheng.config.js",
+    "gh-pages": "bisheng gh-pages -p",
     "compile": "gulp compile",
     "compile:esm": "gulp compile:esm",
     "compile:cjs": "gulp compile:cjs",
