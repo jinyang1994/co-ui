@@ -1,4 +1,6 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
+import DocumentTitle from 'react-document-title';
 import { getLocale } from '@theme/template/utils';
 import Banner from './Banner';
 import Interface from './Interface';
@@ -11,12 +13,21 @@ function Home(props) {
   const locale = getLocale(location.query);
 
   return (
-    <div className={styles.home}>
-      <Banner locale={locale} {...props} />
-      <Interface locale={locale} {...props} />
-      <Illustration locale={locale} {...props} />
-      <Skeleton locale={locale} {...props} />
-    </div>
+    <FormattedMessage id="app.home.banner.title">
+      {
+        text => (
+          <DocumentTitle title={`Concise UI - ${text}`}>
+            <div className={styles.home}>
+              <Banner locale={locale} {...props} />
+              <Interface locale={locale} {...props} />
+              <Illustration locale={locale} {...props} />
+              <Skeleton locale={locale} {...props} />
+            </div>
+          </DocumentTitle>
+        )
+      }
+    </FormattedMessage>
+
   );
 }
 

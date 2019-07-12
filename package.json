@@ -27,8 +27,8 @@
   "homepage": "https://github.com/concise-online/co-ui",
   "scripts": {
     "start": "NODE_ENV=development bisheng start -c ./site/bisheng.config.js",
-    "site": "rm -rf ./_site && mkdir ./_site && bisheng build -c ./site/bisheng.config.js",
-    "gh-pages": "bisheng gh-pages -p",
+    "site": "rm -rf ./_site && mkdir ./_site && cp -i CNAME ./_site  && bisheng build -c ./site/bisheng.config.js",
+    "gh-pages": "bisheng gh-pages -p -r upstream",
     "compile": "gulp compile",
     "compile:esm": "gulp compile:esm",
     "compile:cjs": "gulp compile:cjs",
@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "inter-ui": "^3.7.0",
     "react-intl": "^2.9.0"
   },
   "devDependencies": {
@@ -89,6 +90,7 @@
     "rc-queue-anim": "^1.6.12",
     "rc-scroll-anim": "^2.5.8",
     "rc-tween-one": "^2.4.1",
+    "react-document-title": "^2.0.3",
     "rimraf": "^2.6.3",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.1",

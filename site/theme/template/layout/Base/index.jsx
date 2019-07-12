@@ -16,6 +16,13 @@ function Layout(props) {
   const { location, children } = props;
   const locale = locales[getLocale(location.query)];
 
+  React.useEffect(() => {
+    if (window.ga) {
+      window.ga('set', 'page', location.pathname + location.search);
+      window.ga('send', 'pageview');
+    }
+  });
+
   addLocaleData(locale.data);
 
   return (

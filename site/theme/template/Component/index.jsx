@@ -11,7 +11,7 @@ function Main({ demos, utils, introduce }) {
 
   return (
     <>
-      <Title>{meta.title} {meta.subtitle}</Title>
+      <Title meta={meta} />
       {
         !!content && (
           <Markdown>

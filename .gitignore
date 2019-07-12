@@ -5,3 +5,4 @@ cjs
 esm
 dist
 _site
+package-lock.json
