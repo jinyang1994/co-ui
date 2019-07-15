@@ -3,40 +3,40 @@
   display: inline-block;
   width: 14px;
   height: 2px;
+  vertical-align: middle;
   background: #333;
   transition: background .3s;
-  vertical-align: middle;
 
-  &:before {
+  &::before {
     position: absolute;
     top: -5px;
     display: block;
-    content: '';
     width: 100%;
     height: 100%;
     background: #333;
     transition: transform .3s;
+    content: '';
   }
 
-  &:after {
+  &::after {
     position: absolute;
     top: 5px;
     display: block;
-    content: '';
     width: 100%;
     height: 100%;
     background: #333;
     transition: transform .3s;
+    content: '';
   }
 
   &.opened {
     background: transparent;
 
-    &:before {
+    &::before {
       transform: translateY(5px) rotate(45deg);
     }
 
-    &:after {
+    &::after {
       transform: translateY(-5px) rotate(-45deg);
     }
   }

@@ -1,13 +1,13 @@
 @import "~@theme/variables";
 
 .markdown {
+  color: #2c3f58;
   font-size: 14px;
   line-height: 2;
-  color: #2c3f58;
 
   h1, h2, h3, h4, h5, h6 {
-    font-weight: 500;
     margin: 1.6em 0 0.6em;
+    font-weight: 500;
   }
 
   h2 {
@@ -46,8 +46,8 @@
   }
 
   strong, b {
-    font-weight: 500;
     color: #000;
+    font-weight: 500;
   }
 
   ul, ol {
@@ -76,11 +76,11 @@
   }
 
   blockquote {
-    border-left: 4px solid @active-color;
     margin: 1em 0;
-    font-size: 13px;
     padding-left: 0.8em;
     color: #697b8c;
+    font-size: 13px;
+    border-left: 4px solid @active-color;
 
     p {
       margin: 0;
@@ -92,10 +92,10 @@
   }
 
   table {
+    width: 100%;
+    border-top: 1px solid #d7e1ea;
     border-collapse: collapse;
     border-spacing: 0;
-    border-top: 1px solid #d7e1ea;
-    width: 100%;
 
     tr {
       border-bottom: 1px solid #d7e1ea;
@@ -103,9 +103,9 @@
 
     th, td {
       padding: 10px 16px;
-      border-right: 1px solid #d7e1ea;
       font-size: 14px;
       line-height: 1.57;
+      border-right: 1px solid #d7e1ea;
 
       &:last-child {
         border-right: none;
@@ -113,9 +113,9 @@
     }
 
     th {
-      background: #fafbfd;
-      text-align: left;
       font-weight: 500;
+      text-align: left;
+      background: #fafbfd;
     }
   }
 

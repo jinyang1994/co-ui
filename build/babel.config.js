@@ -1,5 +1,4 @@
-'use strict';
-exports.get = function (modules) {
+exports.get = (modules) => {
   return {
     presets: [
       '@babel/preset-react',

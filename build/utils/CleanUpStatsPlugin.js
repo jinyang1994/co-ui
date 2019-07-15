@@ -24,6 +24,7 @@ class CleanUpStatsPlugin {
 
   apply(compiler) {
     compiler.hooks.done.tap('CleanUpStatsPlugin', stats => {
+      /* eslint-disable no-param-reassign */
       const { children, warnings } = stats.compilation;
       if (Array.isArray(children)) {
         stats.compilation.children = children.filter(child => this.shouldPickStatChild(child));

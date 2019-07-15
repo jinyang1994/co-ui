@@ -106,6 +106,7 @@ function Banner({ themeConfig, locale }) {
             className={styles.preview}
             href={themeConfig.github}
             target="_blank"
+            rel="noopener noreferrer"
           >
             <FormattedMessage id="app.home.banner.preview" />
           </a>

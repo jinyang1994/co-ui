@@ -29,10 +29,10 @@
 
 
 .container() {
-  width: @container-lg;
-  padding: 0 30px;
-  margin: 0 auto;
   box-sizing: border-box;
+  width: @container-lg;
+  margin: 0 auto;
+  padding: 0 30px;
 
   @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
     width: @container-md
@@ -44,9 +44,9 @@
 }
 
 .clear() {
-  &:after {
-    content: '';
+  &::after {
     display: block;
     clear: both;
+    content: '';
   }
 }

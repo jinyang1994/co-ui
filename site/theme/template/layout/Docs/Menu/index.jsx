@@ -29,7 +29,11 @@ function Menu({ picked, location, className }) {
         [styles.opened]: opened,
       }, className)}
     >
-      <button className={styles.switch} onClick={() => setOpened(!opened)}>
+      <button
+        type="button"
+        className={styles.switch}
+        onClick={() => setOpened(!opened)}
+      >
         <Switch opened={opened} />
       </button>
       <ul className={styles.container}>
@@ -73,7 +77,8 @@ function Menu({ picked, location, className }) {
           </ul>
         </li>
       </ul>
-      <div
+      <button
+        type="button"
         className={styles.mask}
         onClick={() => setOpened(false)}
       />
