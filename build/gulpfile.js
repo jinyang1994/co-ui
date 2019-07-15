@@ -26,6 +26,8 @@ function compileTs(output) {
       .src([
         'components/**/*.tsx',
         'components/**/*.ts',
+        '!components/**/*.test.ts',
+        '!components/**/*.test.tsx',
         'typings/**/*.d.ts',
       ])
       .pipe(ts(tsConfig.compilerOptions));

@@ -1,0 +1,22 @@
+{
+  "roots": [
+    "<rootDir>"
+  ],
+  "transform": {
+    "^.+\\.tsx?$": "ts-jest"
+  },
+  "globals": {
+    "ts-jest": {
+      "tsConfig": "./tsconfig.test.json"
+    }
+  },
+  "moduleFileExtensions": [
+    "ts",
+    "tsx",
+    "js",
+    "jsx",
+    "json",
+    "node"
+  ],
+  "setupFilesAfterEnv": ["<rootDir>/.jest.setup.ts"]
+}

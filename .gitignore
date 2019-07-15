@@ -6,3 +6,4 @@ esm
 dist
 _site
 package-lock.json
+coverage
