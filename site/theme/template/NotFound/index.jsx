@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'bisheng/router';
 import { FormattedMessage } from 'react-intl';
 import { getLocale, getLocalePath } from '@theme/template/utils';
-import bg from '@theme/static/not-found.svg';
+import bg from '@theme/template/assets/not-found.svg';
 import styles from './styles.module.less';
 
 function NotFound({ location }) {

@@ -5,7 +5,7 @@ module.exports = {
     path: '/',
     component: './template/layout/Base',
     indexRoute: { 
-      component: './template/Home',
+      component: './template/pages/Home',
     },
     childRoutes: [
       {
@@ -14,11 +14,11 @@ module.exports = {
         childRoutes: [
           {
             path: 'docs/:name',
-            component: './template/Article',
+            component: './template/pages/Article',
           },
           {
             path: 'components/:name',
-            component: './template/Component',
+            component: './template/pages/Component',
           },
         ],
       },
