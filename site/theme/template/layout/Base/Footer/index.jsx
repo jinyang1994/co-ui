@@ -8,7 +8,7 @@ function Footer({ themeConfig }) {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        <a href={website} target="_blank">
+        <a href={website} target="_blank" rel="noopener noreferrer">
           <FormattedMessage id="app.footer.organization" />
         </a>
         <div className={styles.logo} />

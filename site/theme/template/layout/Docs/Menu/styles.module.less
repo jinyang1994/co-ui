@@ -5,22 +5,22 @@
 .menu {
   position: absolute;
   top: @top;
-  left: 0;
   bottom: -@top;
+  left: 0;
   z-index: 100;
 
   ul, li {
-    padding: 0;
     margin: 0;
+    padding: 0;
     list-style: none;
   }
 
   .container {
     height: 100%;
+    padding-bottom: @top + 10px;
+    overflow: auto;
     background: #fff;
     border-right: 1px solid @border-color;
-    overflow: auto;
-    padding-bottom: @top + 10px;
 
 
     > .item {
@@ -29,29 +29,29 @@
       font-size: 14px;
 
       > a {
-        padding-left: 40px;
         padding-right: 16px;
+        padding-left: 40px;
       }
     }
 
     > .submenu {
       > .title {
+        height: 40px;
         margin-top: 4px;
         margin-bottom: 8px;
-        padding-left: 40px;
         padding-right: 16px;
-        line-height: 40px;
-        height: 40px;
-        font-size: 14px;
+        padding-left: 40px;
         font-weight: normal;
+        font-size: 14px;
+        line-height: 40px;
       }
 
       .group {
         > .title {
           padding: 8px 16px 8px 56px;
+          color: rgba(0, 0, 0, .45);
           font-size: 14px;
           line-height: 1.5;
-          color: rgba(0, 0, 0, .45);
         }
 
         > .list {
@@ -61,14 +61,14 @@
             font-size: 14px;
 
             > a {
-              padding-left: 80px;
               padding-right: 16px;
+              padding-left: 80px;
             }
 
             .subtitle {
+              margin-left: 6px;
               font-size: 12px;
               opacity: .67;
-              margin-left: 6px;
             }
           }
         }
@@ -86,10 +86,10 @@
 
   a {
     display: block;
-    line-height: 40px;
     height: 40px;
-    text-decoration: none;
     color: #314659;
+    line-height: 40px;
+    text-decoration: none;
     transition: color .3s, background .3s;
 
     &:hover {
@@ -140,28 +140,30 @@
     }
 
     .switch {
-      display: block;
       position: fixed;
       bottom: 20px;
       left: 20px;
       z-index: 70;
-      cursor: pointer;
-      border: none;
-      background: none;
+      display: block;
       padding: 0;
+      background: none;
+      border: none;
       outline: none;
+      cursor: pointer;
     }
 
     .mask {
-      content: '';
-      display: block;
       position: fixed;
-      z-index: 50;
       top: 0;
-      left: 0;
       right: 0;
+      left: 0;
+      z-index: 50;
+      display: block;
+      width: 100%;
       height: 0;
       background: #000;
+      border: none;
+      border-radius: 0;
       opacity: 0;
       transition: height 0s ease 0.3s, opacity .25s;
     }

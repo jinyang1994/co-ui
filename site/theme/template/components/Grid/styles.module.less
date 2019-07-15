@@ -13,13 +13,13 @@
     }
 
     .column {
-      width: 50%;
       flex: 1;
       box-sizing: border-box;
+      width: 50%;
       padding: 16px 16px 16px 36px;
-      border-right: 1px solid @border-color;
-      text-align: left;
       font-size: 0;
+      text-align: left;
+      border-right: 1px solid @border-color;
 
       @media (max-width: @screen-md-max) {
         padding-left: 25px;
@@ -27,15 +27,15 @@
 
 
       .icon {
-        font-size: 23px;
-        vertical-align: middle;
         margin-right: 16px;
+        font-size: 23px;
         line-height: 1;
+        vertical-align: middle;
       }
 
       .text {
-        font-size: 18px;
         color: #000;
+        font-size: 18px;
         vertical-align: middle;
       }
 
@@ -53,9 +53,9 @@
       border: none;
 
       .column {
-        border: none;
         width: 100%;
         padding-left: 0;
+        border: none;
       }
 
       &:last-child {

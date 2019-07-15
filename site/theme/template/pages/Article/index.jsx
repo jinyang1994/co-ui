@@ -20,7 +20,7 @@ function Main({ utils, introduce }) {
 
 export default collect(async ({ pageData, location }) => {
   const locale = getLocale(location.query);
-  if (!pageData) throw 404;
+  if (!pageData) throw 404; // eslint-disable-line no-throw-literal
 
   return {
     introduce: await pageData[locale](),

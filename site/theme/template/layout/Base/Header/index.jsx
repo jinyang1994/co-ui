@@ -31,11 +31,13 @@ function Navbar({ themeConfig, location }) {
               className={classNames(styles.link, styles.small, styles.border, styles.right)}
               href={website}
               target="_blank"
+              rel="noopener noreferrer"
             >
               <span className={styles.by}>by</span>
               <i className={styles.logo} />
             </a>
             <button
+              type="button"
               className={classNames(styles.switch, styles.border, styles.left)}
               onClick={() => setOpened(!opened)}
             >
@@ -66,6 +68,7 @@ function Navbar({ themeConfig, location }) {
               className={classNames(styles.link, styles.border, styles.left)}
               href={github}
               target="_blank"
+              rel="noopener noreferrer"
             >
               <i className={classNames('mdi mdi-github-circle', styles.icon)} />
               <span>Github</span>

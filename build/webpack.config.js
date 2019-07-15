@@ -1,4 +1,3 @@
-'use strict';
 const path = require('path');
 const WebpackBar = require('webpackbar');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -7,6 +6,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanUpStatsPlugin = require('./utils/CleanUpStatsPlugin');
 const { get: getBabelConfig } = require('./babel.config');
 const postcssConfig = require('./postcss.config');
+
 const babelConfig = getBabelConfig(false);
 
 module.exports = {

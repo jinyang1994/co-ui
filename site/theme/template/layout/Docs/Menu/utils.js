@@ -35,7 +35,7 @@ function getItem(item, locale) {
   };
 }
 
-export function getMenuData(picked, locale) {
+function getMenuData(picked, locale) {
   const sortFn = (a, b) => (a.order || 0) - (b.order || 0);
   const docs = getLocaleItems(picked.docs, locale).map((item) => getItem(item, locale)).sort(sortFn);
   const components = {};
@@ -62,6 +62,5 @@ export function getMenuData(picked, locale) {
   };
 }
 
-
-
-
+export { getMenuData };
+export default getMenuData;

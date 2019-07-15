@@ -3,14 +3,14 @@
 .header {
   position: absolute;
   top: 0;
-  left: 0;
   right: 0;
+  left: 0;
   z-index: 20;
-  width: 100%;
   box-sizing: border-box;
+  width: 100%;
+  background: #fff;
   border-top: 1px solid @border-color;
   border-bottom: 1px solid @border-color;
-  background: #fff;
 
   &.fixed {
     position: fixed;
@@ -25,9 +25,9 @@
     }
 
     .main {
-      border-left: 1px solid @border-color;
-      border-right: 1px solid @border-color;
       background: #fff;
+      border-right: 1px solid @border-color;
+      border-left: 1px solid @border-color;
       .clear();
 
       @media (max-width: @screen-sm-max) {
@@ -37,14 +37,14 @@
 
     .link {
       display: inline-block;
-      vertical-align: top;
-      color: #333;
+      box-sizing: border-box;
       height: 60px;
       padding: 20px;
-      line-height: 20px;
-      box-sizing: border-box;  
+      color: #333;  
       font-size: 14px;
-      text-decoration: none;    
+      line-height: 20px;
+      text-decoration: none;
+      vertical-align: top;    
 
       &.small {
         padding: 15px;
@@ -55,24 +55,24 @@
       float: left;
 
       .righteous {
-        font-family: 'Righteous', cursive;
         font-size: 20px;
+        font-family: 'Righteous', cursive;
         line-height: 20px;
       }
 
       .by {
-        font-size: 12px;
-        font-weight: 300;
-        vertical-align: middle;
-        color: #787878;
         margin-right: 8px;
+        color: #787878;
+        font-weight: 300;
+        font-size: 12px;
+        vertical-align: middle;
       }
 
       .logo {
         display: inline-block;
-        vertical-align: middle;
-        height: 30px;
         width: 30px;
+        height: 30px;
+        vertical-align: middle;
         background: url('~@theme/template/assets/logo.svg') no-repeat center;
         background-size: 30px 30px;
       }
@@ -88,12 +88,12 @@
           display: block;
           float: right;
           width: 60px;
-          text-align: center;
-          border: none;
-          background: none;
-          padding: 0;
           height: 60px;
+          padding: 0;
           line-height: 60px;
+          text-align: center;
+          background: none;
+          border: none;
           outline: none;
         }
       }
@@ -125,35 +125,35 @@
         }
 
         .icon {
-          font-size: 20px;
           position: relative;
           top: 2px;
           margin-right: 5px;
+          font-size: 20px;
         }
       }
 
       @media (max-width: @screen-xs-max) {
         position: absolute;
+        top: 61px;
+        z-index: 10;
         float: none;
         clear: both;
-        width: 100%;
-        background: #fff;
-        top: 61px;
-        transition: height .25s, opacity .25s;
-        opacity: 0;
-        z-index: 10;
-        height: 0;
         box-sizing: border-box;
+        width: 100%;
+        height: 0;
+        background: #fff;
+        opacity: 0;
+        transition: height .25s, opacity .25s;
 
         &.opened {
           height: 240px;
-          opacity: 1;
           border-bottom: 1px solid @border-color;
+          opacity: 1;
         }
 
         .link {
           display: block;
-          border: none!important;
+          border: none !important;
         }
       }
     }

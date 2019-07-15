@@ -1,7 +1,13 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const pkg = require('../package.json');
+
 const isDev = process.env.NODE_ENV === 'development';
+const alias = {
+  'co-ui': path.join(process.cwd(), 'index.js'),
+  '@examples': path.join(process.cwd(), 'site/examples'),
+  '@theme': path.join(process.cwd(), 'site/theme'),
+};
 
 module.exports = {
   hash: true,
@@ -22,11 +28,8 @@ module.exports = {
     verbose: true,
   },
   webpackConfig(config) {
-    config.resolve.alias = {
-      'co-ui': path.join(process.cwd(), 'index.js'),
-      '@examples': path.join(process.cwd(), 'site/examples'),
-      '@theme': path.join(process.cwd(), 'site/theme'),
-    };
+    /* eslint-disable no-param-reassign */
+    config.resolve.alias = alias;
     config.plugins.push(
       new CopyWebpackPlugin([
         {
@@ -42,3 +45,4 @@ module.exports = {
     return config;
   },
 };
+module.exports.alias = alias;

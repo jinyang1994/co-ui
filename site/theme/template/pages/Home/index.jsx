@@ -16,7 +16,7 @@ function Home(props) {
     <FormattedMessage id="app.home.banner.title">
       {
         text => (
-          <DocumentTitle title={`Concise UI - ${text}`}>
+          <DocumentTitle title={`Concise UI - ${text.replace('Concise UI', '')}`}>
             <div className={styles.home}>
               <Banner locale={locale} {...props} />
               <Interface locale={locale} {...props} />
