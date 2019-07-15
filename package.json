@@ -40,7 +40,8 @@
     "lint:demo": "cross-env RUN_ENV=DEMO eslint components --ext '.md'",
     "lint:style": "stylelint '{site,components}/**/*.less' --syntax less",
     "test": "jest -c .jest.json --no-cache",
-    "test:cov": "jest -c .jest.json --coverage --no-cache"
+    "test:cov": "jest -c .jest.json --coverage --no-cache",
+    "ci": "npm run lint && jest --ci --coverage"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
