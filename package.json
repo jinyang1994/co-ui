@@ -41,7 +41,7 @@
     "lint:style": "stylelint '{site,components}/**/*.less' --syntax less",
     "test": "jest -c .jest.json --no-cache",
     "test:cov": "jest -c .jest.json --coverage --no-cache",
-    "ci": "npm run lint && jest --ci --coverage"
+    "ci": "npm run lint && jest -c .jest.json --ci --coverage"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
