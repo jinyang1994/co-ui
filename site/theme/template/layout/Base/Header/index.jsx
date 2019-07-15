@@ -58,7 +58,7 @@ function Navbar({ themeConfig, location }) {
               className={classNames(styles.link, styles.border, styles.left, {
                 [styles.active]: /^(components|docs)\/(?!getting-started)/.test(pathname),
               })}
-              to={getLocalePath('/docs/typography', locale)}
+              to={getLocalePath('/docs/visual', locale)}
             >
               <FormattedMessage id="app.header.preview" />
             </Link>
