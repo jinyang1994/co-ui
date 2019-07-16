@@ -1,0 +1,236 @@
+@import "../../../../components/style/variables";
+
+.colors {
+  overflow-x: auto;
+
+  table {
+    width: 100%;
+    text-align: center;
+    border-top: none !important;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    thead {
+      td {
+        padding: 15px 0;
+        font-size: 14px;
+      }
+    }
+
+    tbody {
+      tr {
+        border: none !important;
+
+        &:first-child {
+          td {
+            padding-top: 30px;
+          }
+        }
+      }
+
+      td {
+        width: 100% / 7;
+        min-width: 120px;
+
+        .item {
+          display: block;
+          box-sizing: border-box;
+          width: 70px;
+          height: 70px;
+          margin: 0 auto;
+          border-radius: 50%;
+        }
+
+        .name {
+          margin: 8px 0 0;
+          color: #778699;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  .fill {
+    cursor: pointer;
+    transition: background .25s;
+
+    &.primary {
+      background: @theme-color-primary-default;
+
+      &:hover {
+        background: @theme-color-primary-light;
+      }
+
+      &:active {
+        background: @theme-color-primary-dark;
+      }
+    }
+
+    &.success {
+      background: @theme-color-success-default;
+
+      &:hover {
+        background: @theme-color-success-light;
+      }
+
+      &:active {
+        background: @theme-color-success-dark;
+      }
+    }
+
+    &.info {
+      background: @theme-color-info-default;
+
+      &:hover {
+        background: @theme-color-info-light;
+      }
+
+      &:active {
+        background: @theme-color-info-dark;
+      }
+    }
+
+    &.danger {
+      background: @theme-color-danger-default;
+
+      &:hover {
+        background: @theme-color-danger-light;
+      }
+
+      &:active {
+        background: @theme-color-danger-dark;
+      }
+    }
+
+    &.warning {
+      background: @theme-color-warning-default;
+
+      &:hover {
+        background: @theme-color-warning-light;
+      }
+
+      &:active {
+        background: @theme-color-warning-dark;
+      }
+    }
+  }
+
+  .pastel {
+    &.primary {
+      background: @theme-color-primary-pastel;
+    }
+
+    &.success {
+      background: @theme-color-success-pastel;
+    }
+
+    &.info {
+      background: @theme-color-info-pastel;
+    }
+
+    &.danger {
+      background: @theme-color-danger-pastel;
+    }
+
+    &.warning {
+      background: @theme-color-warning-pastel;
+    }
+  }
+
+  .border {
+    &.default {
+      border: 2px solid @border-color;
+    }
+
+    &.primary {
+      border: 2px solid @theme-color-primary-default;
+    }
+
+    &.success {
+      border: 2px solid @theme-color-success-default;
+    }
+
+    &.info {
+      border: 2px solid @theme-color-info-default;
+    }
+
+    &.danger {
+      border: 2px solid @theme-color-danger-default;
+    }
+
+    &.warning {
+      border: 2px solid @theme-color-warning-default;
+    }
+  }
+
+  .basic {
+    &.black {
+      background: @basic-color-block-base;
+    }
+
+    &.grey {
+      background: @basic-color-grey-base;
+
+      &.dark {
+        background: @basic-color-grey-dark;
+      }
+
+      &.light {
+        background: @basic-color-grey-light;
+
+        &.extra {
+          background: @basic-color-grey-extra-light;
+        }
+      }
+    }
+
+    &.white {
+      background: @basic-color-white-base;
+      border: 1px solid @basic-color-grey-light;
+
+      &.dark {
+        background: @basic-color-white-dark;
+        border: none;
+      }
+    }
+  }
+
+  .status {
+    &.hovered {
+      border: 1px solid @theme-color-primary-default;
+    }
+
+    &.active {
+      border: 1px solid @theme-color-primary-default;
+      box-shadow: @box-shadow-primary;
+    }
+
+    &.disabled {
+      background: @disabled-bg-color;
+      border: 1px solid @border-color;
+      cursor: not-allowed;
+    }
+  }
+
+  .shadow {
+    &.shadow1 {
+      box-shadow: @box-shadow-1;
+    }
+
+    &.shadow2 {
+      box-shadow: @box-shadow-2;
+    }
+
+    &.shadow3 {
+      box-shadow: @box-shadow-3;
+    }
+
+    &.shadow4 {
+      box-shadow: @box-shadow-4;
+    }
+
+    &.shadow5 {
+      box-shadow: @box-shadow-5;
+    }
+  }
+}

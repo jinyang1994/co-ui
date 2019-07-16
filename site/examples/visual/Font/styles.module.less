@@ -1,0 +1,75 @@
+.font {
+  overflow-x: auto;
+
+  table {
+    width: 100%;
+    text-align: center;
+    border-top: none !important;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    .name {
+      color: #778699;
+      font-weight: normal;
+      font-size: 14px;
+      vertical-align: middle;
+      transition: color .3s, opacity .3s;
+    }
+
+    .header {
+      display: inline-block;
+      padding: 15px 0;
+      font-size: 14px;
+      line-height: 1.5;
+      text-align: left;
+
+      .num {
+        margin: 0;
+        color: #2c3f58;
+        font-weight: 500;
+      }
+
+      .size {
+        margin: 0;
+        color: #778699;
+        font-size: 12px;
+      }
+    }
+
+    .font {
+      font-family: 'Inter', sans-serif;
+    }
+
+    tbody {
+      tr {
+        border: none !important;
+        cursor: pointer;
+        transition: background .3s, color .3s;
+
+        &:nth-child(even) {
+          background: #fafbfd;
+        }
+
+        &:hover {
+          color: #fff;
+          background: #696cff;
+
+          .name {
+            color: #fff;
+            opacity: .5;
+          }
+
+          &:nth-child(even) {
+            background: rgba(105, 108, 255 .08);
+          }
+        }
+      }
+
+      td {
+        width: 100% / 7;
+        min-width: 100px;
+        vertical-align: text-bottom;
+      }
+    }
+  }
+}

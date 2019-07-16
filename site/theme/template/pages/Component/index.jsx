@@ -8,6 +8,7 @@ import styles from './styles.module.less';
 
 function Main({ demos, utils, introduce }) {
   const { meta, content } = introduce;
+  const sortFn = (a, b) => (a.meta.order || 0) - (b.meta.order || 0);
 
   return (
     <>
@@ -20,7 +21,7 @@ function Main({ demos, utils, introduce }) {
         )
       }
       {
-        demos.filter(demo => demo.preview).map((demoData) => (
+        demos.filter(demo => demo.preview).sort(sortFn).map((demoData) => (
           <Demo
             {...demoData}
             key={demoData.meta.filename}
