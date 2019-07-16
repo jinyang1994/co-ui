@@ -27,11 +27,11 @@ function Layout(props) {
 
   return (
     <IntlProvider locale={locale.locale} messages={locale.messages}>
-      <div>
+      <>
         <Header {...props} />
         {children}
         <Footer {...props} />
-      </div>
+      </>
     </IntlProvider>
   );
 }

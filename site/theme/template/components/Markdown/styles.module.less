@@ -120,16 +120,22 @@
   }
 
   .api {
-    td:first-child {
-      width: 20%;
-    }
-    td:nth-child(3) {
-      width: 22%;
-      color: #c41d7f;
-      word-break: break-all;
-    }
-    td:nth-child(4) {
-      width: 13%;
+    overflow-x: auto;
+
+    table {
+      min-width: 719px;
+
+      td:first-child {
+        width: 20%;
+      }
+      td:nth-child(3) {
+        width: 22%;
+        color: #c41d7f;
+        word-break: break-all;
+      }
+      td:nth-child(4) {
+        width: 13%;
+      }
     }
   }
 }

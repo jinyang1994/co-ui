@@ -38,11 +38,15 @@
     "lint:ts": "tslint -c tslint.json -p tsconfig.json 'components/**/*.{ts,tsx}'",
     "lint:es": "eslint site build --ext '.js,.jsx'",
     "lint:demo": "cross-env RUN_ENV=DEMO eslint components --ext '.md'",
-    "lint:style": "stylelint '{site,components}/**/*.less' --syntax less",
+    "lint:style": "stylelint --fix '{site,components}/**/*.less' --syntax less",
     "test": "jest -c .jest.json --no-cache",
     "test:cov": "jest -c .jest.json --coverage --no-cache",
     "ci": "npm run lint && jest -c .jest.json --ci --coverage"
   },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
@@ -68,6 +72,7 @@
     "@babel/preset-env": "^7.5.3",
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.4.5",
+    "@types/classnames": "^2.2.9",
     "@types/enzyme": "^3.10.2",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.15",
@@ -113,6 +118,7 @@
     "mini-css-extract-plugin": "^0.7.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
+    "pre-commit": "^1.2.2",
     "rc-queue-anim": "^1.6.12",
     "rc-scroll-anim": "^2.5.8",
     "rc-tween-one": "^2.4.1",
