@@ -1,3 +1,100 @@
-.co-button {
-  background: blue;
+@btn-prefix: ~"@{prefix}-btn";
+
+.@{btn-prefix} {
+  height: @form-item-height-base;
+  padding: 0 15px 1px;
+  color: @basic-color-grey-dark;
+  font-weight: 500;
+  font-size: @font-size-base;
+  text-align: center;
+  background: @basic-color-white-base;
+  border: @border-width @border-style @border-color;
+  border-radius: @border-radius-base;
+  outline: 0;
+  cursor: pointer;
+  transition: border-color @transition-date-base, color @transition-date-base, box-shadow @transition-date-base, background @transition-date-base;
+  user-select: none;
+
+  &:not([disabled]) {
+    &:hover {
+      color: @theme-color-primary-default;
+      border-color: @theme-color-primary-default;
+    }
+
+    &:active {
+      color: @theme-color-primary-dark;
+      border-color: @theme-color-primary-dark;
+      box-shadow: @box-shadow-primary;
+    }
+  }
+
+  &.@{btn-prefix}-fill {
+    background: @basic-color-grey-light;
+    border-color: @basic-color-grey-light;
+
+    &:not([disabled]) {
+      &:hover {
+        color: @basic-color-white-base;
+        background: @basic-color-grey-dark;
+        border-color: @basic-color-grey-dark;
+      }
+
+      &:active {
+        color: @basic-color-white-base;
+        background: @basic-color-black-base;
+        border-color: @basic-color-black-base;
+        box-shadow: @box-shadow-1;
+      }
+    }
+  }
+
+  &[disabled] {
+    color: rgba(@basic-color-grey-dark, @disabled-opacity);
+    background: @disabled-bg-color;
+    cursor: not-allowed;
+  }
+
+  // Button type
+  .theme(primary);
+  .theme(success);
+  .theme(info);
+  .theme(danger);
+  .theme(warning);
+}
+
+.theme(@name) {
+  &.@{btn-prefix}-@{name} {
+    color: ~"@{theme-color-@{name}-default}";
+    background: @basic-color-white-base;
+    border-color: ~"@{theme-color-@{name}-default}";
+
+    &.@{btn-prefix}-fill {
+      color: @basic-color-white-base;
+      background: ~"@{theme-color-@{name}-default}";
+
+      &:not([disabled]):hover {
+        background: ~"@{theme-color-@{name}-light}";
+        border-color: ~"@{theme-color-@{name}-light}";
+      }
+    }
+
+    &[disabled] {
+      opacity: @disabled-opacity;
+    }
+
+    &:not([disabled]) {
+      &:hover {
+        color: @basic-color-white-base;
+        background: ~"@{theme-color-@{name}-default}";
+        border-color: ~"@{theme-color-@{name}-default}";
+      }
+
+      &:active, &.@{btn-prefix}-fill:active {
+        color: @basic-color-white-base;
+        background: ~"@{theme-color-@{name}-dark}";
+        border-color: ~"@{theme-color-@{name}-dark}";
+        box-shadow: ~"@{box-shadow-@{name}}";
+      }
+    }
+  }
 }

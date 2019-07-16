@@ -7,31 +7,30 @@ title:
 
 ## zh-CN
 
-测试按钮   
+类型分为：`朴素`、`主要`、`成功`、`信息`、`危险`、`警告`  
 
 ## en-US
 
-Default button   
+Button type: Default, Primary, Success, Info, Danger, Warning   
 
 ```jsx
 import { Button } from 'co-ui';
 
 ReactDOM.render(
   <div className="example">
-    <Button onClick={() => window.alert(123)}>Default</Button>
+    <Button>Default</Button>
+    <Button type="primary">Primary</Button>
+    <Button type="success">Success</Button>
+    <Button type="info">Information</Button>
+    <Button type="danger">Danger</Button>
+    <Button type="warning">Warning</Button>
   </div>,
   mountNode,
 );
 ```
 
-```css
-.example button {
-  color: red;
-}
-```
-
 <style>
- .test button + button {
-    margin-left: 20px;
+ .example button + button {
+    margin-left: 15px;
  }
 </style>
