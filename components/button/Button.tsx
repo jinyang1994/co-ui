@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import classNames from 'classnames';
 import { getPrefixCls } from '../utils/config';
 
 const prefixCls = getPrefixCls('btn');
 
-interface Props extends React.HTMLAttributes<HTMLButtonElement> {
+interface Props extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
   type?: 'primary' | 'success' | 'info' | 'warning' | 'danger';
   htmlType?: 'button' | 'submit' | 'reset';
   fill?: boolean;
