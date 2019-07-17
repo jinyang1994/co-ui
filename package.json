@@ -1,10 +1,10 @@
 {
-  "name": "co-ui",
-  "version": "0.0.1",
+  "name": "@concise-online/co-ui",
+  "version": "0.0.2",
   "description": "A React.js UI Toolkit for Web",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "typings": "lib/index.d.ts",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "typings": "cjs/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/concise-online/co-ui.git"
@@ -38,14 +38,13 @@
     "lint:ts": "tslint -c tslint.json -p tsconfig.json 'components/**/*.{ts,tsx}'",
     "lint:es": "eslint site build --ext '.js,.jsx'",
     "lint:demo": "cross-env RUN_ENV=DEMO eslint components --ext '.md'",
-    "lint:style": "stylelint --fix '{site,components}/**/*.less' --syntax less",
+    "lint:style": "stylelint '{site,components}/**/*.less' --syntax less",
     "test": "jest -c .jest.json --no-cache",
     "test:cov": "jest -c .jest.json --coverage --no-cache",
     "ci": "npm run lint && jest -c .jest.json --ci --coverage"
   },
   "pre-commit": [
-    "lint",
-    "test"
+    "lint"
   ],
   "peerDependencies": {
     "react": ">=16.8.0",
