@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentProps } from 'react';
 import classNames from 'classnames';
 import MdiIcon from '@mdi/react';
 import icons, { register } from './icons';
@@ -7,12 +7,9 @@ import warning from '../_utils/warning';
 
 const prefixCls = getPrefixCls('icon');
 
-interface Props extends Omit<React.ComponentProps<typeof MdiIcon>, 'path'> {
+interface Props extends Omit<ComponentProps<typeof MdiIcon>, 'path'> {
   name: string;
 }
-type Icon = React.FunctionComponent<Props> & {
-  register?: (name: string, path: string) => void;
-};
 
 function Icon(props: Props) {
   const { name, className, ...iconProps } = props;
