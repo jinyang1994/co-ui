@@ -1,6 +1,5 @@
 import Icon from './Icon';
-import { register } from './icons';
+import { register as registerIcon } from './icons';
 
-Icon.register = register;
-
+export { registerIcon };
 export default Icon;

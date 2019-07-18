@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import MdiIcon from '@mdi/react';
-import icons from './icons';
+import icons, { register } from './icons';
 import { getPrefixCls } from '../_utils/config';
 import warning from '../_utils/warning';
 
@@ -14,7 +14,7 @@ type Icon = React.FunctionComponent<Props> & {
   register?: (name: string, path: string) => void;
 };
 
-const Icon: Icon = (props: Props) => {
+function Icon(props: Props) {
   const { name, className, ...iconProps } = props;
 
   if (!icons[name]) {
@@ -31,6 +31,8 @@ const Icon: Icon = (props: Props) => {
       {...iconProps}
     />
   );
-};
+}
+
+Icon.register = register;
 
 export default Icon;
