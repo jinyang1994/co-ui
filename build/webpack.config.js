@@ -12,12 +12,12 @@ const babelConfig = getBabelConfig(false);
 module.exports = {
   mode: 'production',
   entry: {
-    'coui': path.join(process.cwd(), 'index.js'),
+    'co': path.join(process.cwd(), 'index.js'),
   },
   output: {
     path: path.join(process.cwd(), 'dist'),
     filename: '[name].js',
-    library: 'coui',
+    library: 'co',
     libraryTarget: 'umd',
   },
   devtool: 'source-map',
@@ -46,6 +46,10 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        include: path.join(process.cwd(), 'node_modules/@mdi/js'),
+        sideEffects: false
+      },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,

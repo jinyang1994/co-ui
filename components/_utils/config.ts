@@ -1,3 +1,3 @@
 export function getPrefixCls(name: string): string {
-  return `co-ui-${name}`;
+  return `co-${name}`;
 }
