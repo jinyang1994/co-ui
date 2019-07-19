@@ -1,18 +1,19 @@
 import React, { ButtonHTMLAttributes, Children, ReactChild } from 'react';
 import classNames from 'classnames';
 import Icon from '../icon';
+import ButtonGroup from './ButtonGroup';
 import { getPrefixCls } from '../_utils/config';
 import { isReactText } from '../_utils/children';
 
 const prefixCls = getPrefixCls('btn');
 
-interface Props extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
+export interface Props extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
   type?: 'primary' | 'success' | 'info' | 'warning' | 'danger';
   htmlType?: 'button' | 'submit' | 'reset';
   fill?: boolean;
   icon?: string;
   loading?: string;
-  children?: ReactChild[];
+  children?: ReactChild | ReactChild[];
 }
 
 function Button(props: Props) {
@@ -55,5 +56,8 @@ function Button(props: Props) {
     </button>
   );
 }
+
+Button.Group = ButtonGroup;
+Button.isButton = true;
 
 export default Button;
