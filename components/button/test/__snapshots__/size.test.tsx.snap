@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`button size feature render correctly 1`] = `
+<div>
+  <button
+    class="co-btn co-btn-large"
+  >
+    <span>
+      Large
+    </span>
+  </button>
+  <button
+    class="co-btn"
+  >
+    <span>
+      Normal
+    </span>
+  </button>
+  <button
+    class="co-btn co-btn-small"
+  >
+    <span>
+      Small
+    </span>
+  </button>
+</div>
+`;

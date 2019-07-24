@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`button fill feature renders correctly 1`] = `
+<button
+  class="co-btn co-btn-fill"
+>
+  <span>
+    Button
+  </span>
+</button>
+`;

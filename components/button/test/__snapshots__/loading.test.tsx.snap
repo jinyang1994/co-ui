@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`button loading feature render correctly 1`] = `
+<button
+  class="co-btn co-btn-loading"
+>
+  <svg
+    aria-label="icon: loading"
+    class="co-icon co-btn-icon"
+    role="presentation"
+    style="width:1em;height:1em"
+    viewBox="0 0 24 24"
+  >
+    <g
+      style="animation:spin linear 0.8s infinite;transform-origin:center"
+    >
+      <path
+        d="M12,4V2C6.48,2 2,6.48 2,12H4C4,7.58 7.58,4 12,4Z"
+        style="fill:currentColor"
+      />
+      <rect
+        fill="transparent"
+        height="24"
+        width="24"
+      />
+    </g>
+  </svg>
+  <span>
+    Loading...
+  </span>
+</button>
+`;
