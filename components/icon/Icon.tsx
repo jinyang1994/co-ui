@@ -21,6 +21,7 @@ function Icon(props: Props) {
 
   return (
     <MdiIcon
+      aria-label={`icon: ${name}`}
       path={icons[name]}
       size="1em"
       color="currentColor"
