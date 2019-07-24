@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`button group feature renders correctly 1`] = `
+<div
+  class="co-btn-group"
+>
+  <button
+    class="co-btn"
+  >
+    <span>
+      Prev
+    </span>
+  </button>
+  <button
+    class="co-btn"
+  >
+    <span>
+      Next
+    </span>
+  </button>
+</div>
+`;

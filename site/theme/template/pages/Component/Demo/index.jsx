@@ -11,12 +11,12 @@ function Demo({ meta, content, preview, highlightedCode, highlightedStyle, style
         {utils.toReactComponent(['div', ...content])}
       </div>
       <div>{preview(React, ReactDOM)}</div>
-      <h3>JavaScript</h3>
+      <h4>JavaScript</h4>
       {utils.toReactComponent(highlightedCode)}
       {
         !!highlightedStyle && (
           <>
-            <h3>CSS</h3>
+            <h4>CSS</h4>
             <div>
               <pre className="language-css">
                 <code dangerouslySetInnerHTML={{ __html: highlightedStyle }} />

@@ -18,5 +18,6 @@
     "json",
     "node"
   ],
+  "snapshotSerializers": ["enzyme-to-json/serializer"],
   "setupFilesAfterEnv": ["<rootDir>/.jest.setup.ts"]
 }

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`button basic feature renders correctly 1`] = `
+<button
+  class="co-btn"
+>
+  <span>
+    Test
+  </span>
+</button>
+`;

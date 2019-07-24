@@ -1,12 +1,15 @@
 @btn-prefix: ~"@{prefix}-btn";
 
 .@{btn-prefix} {
+  display: inline-block;
   height: @form-item-height-base;
-  padding: 0 15px 1px;
+  padding: 0 15px;
   color: @basic-color-grey-dark;
   font-weight: 500;
   font-size: @font-size-base;
+  line-height: 1;
   text-align: center;
+  vertical-align: top;
   background: @basic-color-white-base;
   border: @border-width @border-style @border-color;
   border-radius: @border-radius-base;
@@ -48,21 +51,41 @@
     }
   }
 
+  &.@{btn-prefix}-loading {
+    pointer-events: none;
+  }
+
   &[disabled] {
     color: rgba(@basic-color-grey-dark, @disabled-opacity);
     background: @disabled-bg-color;
     cursor: not-allowed;
   }
 
+  .@{icon-prefix} {
+    font-size: @font-size-base + 4px;
+
+    & + &, & + span {
+      margin-left: 7px;
+    }
+  }
+
+  span {
+    display: inline-block;
+  }
+
   // Button type
-  .theme(primary);
-  .theme(success);
-  .theme(info);
-  .theme(danger);
-  .theme(warning);
+  .btn-theme(primary);
+  .btn-theme(success);
+  .btn-theme(info);
+  .btn-theme(danger);
+  .btn-theme(warning);
+
+  // Button size
+  .btn-size(small, @font-size-small, @form-item-height-small, @border-radius-small);
+  .btn-size(large, @font-size-large, @form-item-height-large, @border-radius-large);
 }
 
-.theme(@name) {
+.btn-theme(@name) {
   &.@{btn-prefix}-@{name} {
     color: ~"@{theme-color-@{name}-default}";
     background: @basic-color-white-base;
@@ -94,6 +117,22 @@
         background: ~"@{theme-color-@{name}-dark}";
         border-color: ~"@{theme-color-@{name}-dark}";
         box-shadow: ~"@{box-shadow-@{name}}";
+      }
+    }
+  }
+}
+
+.btn-size(@size, @font-size, @form-item-height, @border-radius) {
+  &.@{btn-prefix}-@{size} {
+    height: @form-item-height;
+    font-size: @font-size;
+    border-radius: @border-radius;
+
+    .@{icon-prefix} {
+      font-size: @font-size + 4px;
+
+      & + &, & + span {
+        margin-left: 7px;
       }
     }
   }
