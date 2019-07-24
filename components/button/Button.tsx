@@ -7,19 +7,23 @@ import { isReactText } from '../_utils/children';
 
 const prefixCls = getPrefixCls('btn');
 
+export type Size = 'small' | 'large' | 'normal';
 export interface Props extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
   type?: 'primary' | 'success' | 'info' | 'warning' | 'danger';
   htmlType?: 'button' | 'submit' | 'reset';
   fill?: boolean;
   icon?: string;
-  loading?: string;
+  loading?: boolean;
+  disabled?: boolean;
+  size?: Size;
   children?: ReactChild | ReactChild[];
 }
 
 function Button(props: Props) {
-  const { children, className, htmlType, type, fill, icon, loading, ...btnProps } = props;
+  const { children, className, htmlType, type, fill, icon, loading, size, ...btnProps } = props;
   const classes = classNames(prefixCls, className, {
     [`${prefixCls}-${type}`]: !!type,
+    [`${prefixCls}-${size}`]: !!size,
     [`${prefixCls}-fill`]: fill,
     [`${prefixCls}-loading`]: loading,
   });

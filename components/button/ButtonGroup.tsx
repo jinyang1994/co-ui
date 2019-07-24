@@ -1,22 +1,23 @@
-import React, { HTMLAttributes, Children, ReactNode, ReactComponentElement } from 'react';
+import React, { HTMLAttributes, Children, ReactNode, cloneElement } from 'react';
 import classNames from 'classnames';
-import Button from './Button';
+import Button, { Size } from './Button';
 import { getPrefixCls } from '../_utils/config';
 
 const prefixCls = getPrefixCls('btn-group');
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
-  children: ReactComponentElement<typeof Button> | ReactComponentElement<typeof Button>[];
+  children: React.ReactElement<Button>[];
+  size?: Size;
 }
 
 function ButtonGroup(props: Props) {
-  const { className, children } = props;
+  const { className, children, size } = props;
   const classes = classNames(prefixCls, className);
   const nodes: ReactNode[] = [];
 
   Children.forEach(children, (child) => {
     if (!child) return;
-    if (child.type && child.type.isButton) {
+    if (child.type && (child.type as typeof Button).isButton) {
       nodes.push(child);
     }
   });
@@ -26,7 +27,7 @@ function ButtonGroup(props: Props) {
       className={classes}
       {...props}
     >
-      {Children.map(nodes, item => item)}
+      {Children.map(nodes, item => cloneElement(item as Button, { size }))}
     </div>
   );
 }

@@ -1,6 +1,8 @@
 @btn-group-prefix: ~"@{prefix}-btn-group";
 
 .@{btn-group-prefix} {
+  display: inline-block;
+
   > :not(.@{btn-prefix}) {
     display: none;
   }
@@ -14,6 +16,7 @@
     &:hover {
       z-index: 2;
     }
+
     &:disabled {
       z-index: 0;
     }
