@@ -16,16 +16,14 @@ describe('switch disabled feature', () => {
   });
 
   it('set disabled of switch', () => {
-    let value = false;
+    const container = document.createElement('div');
+    document.body.appendChild(container);
+    const onChange = jest.fn();
     const wrapper = mount((
-      <Switch
-        disabled
-        value={value}
-        onChange={(next) => value = next}
-      />
-    ));
+      <Switch disabled onChange={onChange} />
+    ), { attachTo: container });
 
-    wrapper.find('input').simulate('change', { target: { checked: true } });
-    expect(value).toBeFalsy();
+    wrapper.find('input').simulate('change');
+    expect(onChange).not.toBeCalled();
   });
 });

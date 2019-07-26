@@ -11,17 +11,15 @@ describe('switch loading feature', () => {
   });
 
   it('switching values ​​are not allowed when loading state', () => {
-    let value = false;
+    const container = document.createElement('div');
+    document.body.appendChild(container);
+    const onChange = jest.fn();
     const wrapper = mount((
-      <Switch
-        loading
-        value={value}
-        onChange={(next) => value = next}
-      />
-    ));
+      <Switch loading onChange={onChange} />
+    ), { attachTo: container });
 
-    wrapper.find('input').simulate('change', { target: { checked: true } });
-    expect(value).toBeFalsy();
+    wrapper.find('input').simulate('change');
+    expect(onChange).not.toBeCalled();
   });
 
   it('loading icon when loading state', () => {
