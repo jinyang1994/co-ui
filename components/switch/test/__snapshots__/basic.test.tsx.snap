@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`switch basic feature renders correctly 1`] = `
+<label
+  class="co-switch"
+>
+  <input
+    type="checkbox"
+  />
+  <span
+    class="co-switch-dot"
+  />
+</label>
+`;

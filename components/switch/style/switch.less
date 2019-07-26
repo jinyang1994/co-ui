@@ -1,0 +1,105 @@
+@switch-prefix: ~"@{prefix}-switch";
+
+.@{switch-prefix} {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  background: @basic-color-white-base;
+  border: 1px solid @border-color;
+  cursor: pointer;
+  transition: border-color @transition-date-base, background-color @transition-date-base;
+  user-select: none;
+
+  .@{switch-prefix}-dot {
+    position: absolute;
+    display: block;
+    background: @basic-color-grey-light;
+    border-radius: 50%;
+    box-shadow: -2px 2px 5px 0 rgba(67, 86, 100, 0.12), -1px 1px 2px 0 rgba(67, 70, 74, 0);
+    transition: left @transition-date-base;
+  }
+
+  .@{switch-prefix}-spin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: @basic-color-white-base;
+    transform: translate(-50%, -50%);
+  }
+
+  &.@{switch-prefix}-loading {
+    cursor: wait;
+  }
+
+  &.@{switch-prefix}-active {
+    background: @theme-color-primary-default;
+    border-color: @theme-color-primary-default;
+
+    .@{switch-prefix}-dot {
+      background: @basic-color-white-base;
+    }
+
+    .@{switch-prefix}-spin {
+      color: @theme-color-primary-default;
+    }
+  }
+
+  &.@{switch-prefix}-disabled {
+    background: @disabled-bg-color;
+    border-color: @border-color;
+    cursor: not-allowed;
+    opacity: @disabled-opacity;
+
+    .@{switch-prefix}-dot {
+      background: @basic-color-white-base;
+    }
+  }
+
+  input {
+    display: none;
+  }
+
+  // switch size
+  @switch-height-large: 32px;
+  @switch-height-base: 24px;
+  @switch-height-small: 16px;
+  @switch-width-large: 52px;
+  @switch-width-base: 42px;
+  @switch-width-small: 27px;
+  @switch-dot-size-large: 24px;
+  @switch-dot-size-base: 18px;
+  @switch-dot-size-small: 10px;
+
+  .switch-size(@switch-width-base, @switch-height-base, @switch-dot-size-base);
+  &.@{switch-prefix}-large {
+    .switch-size(@switch-width-large, @switch-height-large, @switch-dot-size-large);
+  }
+  &.@{switch-prefix}-mini {
+    .switch-size(@switch-width-small, @switch-height-small, @switch-dot-size-small);
+  }
+}
+
+.switch-size(@width, @height, @dot-size) {
+  @margin: (@height - @dot-size) / 2;
+
+  width: @width;
+  height: @height;
+  border-radius: @height / 2;
+
+  .@{switch-prefix}-dot {
+    top: @margin - 1;
+    left: @margin - 1;
+    width: @dot-size;
+    height: @dot-size;
+  }
+
+  .@{switch-prefix}-spin {
+    width: (@dot-size - 2) !important;
+    height: (@dot-size - 2) !important;
+  }
+
+  &.@{switch-prefix}-active .@{switch-prefix}-dot {
+    left: @width - @margin - @dot-size - 1;
+  }
+}
+

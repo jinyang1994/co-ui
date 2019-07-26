@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`switch color feature renders correctly 1`] = `
+<div>
+  <label
+    class="co-switch co-switch-large"
+  >
+    <input
+      type="checkbox"
+    />
+    <span
+      class="co-switch-dot"
+    />
+  </label>
+  <label
+    class="co-switch"
+  >
+    <input
+      type="checkbox"
+    />
+    <span
+      class="co-switch-dot"
+    />
+  </label>
+  <label
+    class="co-switch co-switch-small"
+  >
+    <input
+      type="checkbox"
+    />
+    <span
+      class="co-switch-dot"
+    />
+  </label>
+</div>
+`;
