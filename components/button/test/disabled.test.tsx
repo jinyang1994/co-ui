@@ -10,13 +10,21 @@ describe('button disabled feature', () => {
   });
 
   it('click event correctly', () => {
-    let num = 0;
-    const wrapper = mount(<Button disabled onClick={() => num = 1}>Click Me</Button>);
+    const container = document.createElement('div');
+    document.body.appendChild(container);
+    const onClick = jest.fn();
+    const wrapper = mount((
+      <Button
+        disabled
+        onClick={onClick}
+      >
+        Click Me
+      </Button>
+    ), {
+      attachTo: container,
+    });
 
     wrapper.simulate('click');
-    expect(num).toBe(0);
-    wrapper.setProps({ disabled: false });
-    wrapper.simulate('click');
-    expect(num).toBe(1);
+    expect(onClick).not.toBeCalled();
   });
 });

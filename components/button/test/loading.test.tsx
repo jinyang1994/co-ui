@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, render } from 'enzyme';
+import { shallow, render, mount } from 'enzyme';
 import Button from '../index';
 import Icon from '../../icon';
 
@@ -27,5 +27,17 @@ describe('button loading feature', () => {
     wrapper.setProps({ loading: true });
     expect(wrapper.childAt(0).type()).toBe(Icon);
     expect(wrapper.childAt(0).prop('name')).toBe('loading');
+  });
+
+  it('disable click events when loading', () => {
+    const container = document.createElement('div');
+    document.body.appendChild(container);
+    const onClick = jest.fn();
+    const wrapper = mount((
+      <Button loading>Loading...</Button>
+    ), { attachTo: container });
+
+    wrapper.simulate('click');
+    expect(onClick).not.toBeCalled();
   });
 });

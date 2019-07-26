@@ -1,9 +1,10 @@
-import React, { ButtonHTMLAttributes, Children, ReactChild } from 'react';
+import React, { ButtonHTMLAttributes, Children, ReactChild, MouseEvent } from 'react';
 import classNames from 'classnames';
 import Icon from '../icon';
 import ButtonGroup from './ButtonGroup';
-import { getPrefixCls } from '../_utils/config';
+import { runCallback } from '../_utils/function';
 import { isReactText } from '../_utils/children';
+import { getPrefixCls } from '../_utils/config';
 
 const prefixCls = getPrefixCls('btn');
 
@@ -20,7 +21,7 @@ export interface Props extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'ty
 }
 
 function Button(props: Props) {
-  const { children, className, htmlType, type, fill, icon, loading, size, ...btnProps } = props;
+  const { children, className, htmlType, type, fill, icon, loading, size, onClick, disabled, ...btnProps } = props;
   const classes = classNames(prefixCls, className, {
     [`${prefixCls}-${type}`]: !!type,
     [`${prefixCls}-${size}`]: !!size,
@@ -29,6 +30,10 @@ function Button(props: Props) {
   });
   const nodes: ReactChild[] = [];
   let isPrevReactText = false;
+  function handleClick(e: MouseEvent<HTMLButtonElement>) {
+    if (disabled || loading) return;
+    runCallback(onClick, e);
+  }
 
   if (loading) {
     nodes[0] = <Icon name="loading" className={`${prefixCls}-icon`} spin={0.8} />;
@@ -54,6 +59,8 @@ function Button(props: Props) {
     <button
       type={htmlType}
       className={classes}
+      onClick={handleClick}
+      disabled={disabled}
       {...btnProps}
     >
       {Children.map(nodes, (node) => isReactText(node) ? <span>{node}</span> : node)}

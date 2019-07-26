@@ -10,15 +10,14 @@ describe('switch basic feature', () => {
   });
 
   it('change event correctly', () => {
-    let value = false;
+    const container = document.createElement('div');
+    document.body.appendChild(container);
+    const onChange = jest.fn();
     const wrapper = mount((
-      <Switch
-        value={value}
-        onChange={(next) => value = next}
-      />
-    ));
+      <Switch onChange={onChange} />
+    ), { attachTo: container });
 
-    wrapper.find('input').simulate('change', { target: { checked: true } });
-    expect(value).toBeTruthy();
+    wrapper.find('input').simulate('change');
+    expect(onChange).toBeCalled();
   });
 });

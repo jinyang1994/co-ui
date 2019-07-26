@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, ChangeEvent } from 'react';
 import classNames from 'classnames';
 import Icon from '../icon';
 import { runCallback } from '../_utils/function';
@@ -12,7 +12,7 @@ interface Props extends Omit<HTMLAttributes<HTMLInputElement>, 'onChange'> {
   disabled?: boolean;
   loading?: boolean;
   className?: string;
-  onChange?: (value: boolean) => void;
+  onChange?: (value: boolean, e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 function Switch(props: Props) {
@@ -23,6 +23,10 @@ function Switch(props: Props) {
     [`${prefixCls}-${size}`]: !!size,
     [`${prefixCls}-loading`]: loading,
   }, className);
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    if (disabled || loading) return;
+    runCallback(onChange, e.target.checked, e);
+  }
 
   return (
     <label
@@ -35,7 +39,7 @@ function Switch(props: Props) {
         type="checkbox"
         disabled={disabled || loading}
         checked={checked}
-        onChange={(e) => runCallback(onChange, e.target.checked, e)}
+        onChange={handleChange}
       />
       <span className={`${prefixCls}-dot`}>
         {loading && <Icon name="loading" className={`${prefixCls}-spin`} spin={0.8} />}
