@@ -14,11 +14,10 @@ title:
 Set the loading state by the `loading` property, which will overwrite the displayed `icon` when loading
 
 ```jsx
-import React, { useState } from 'react';
 import { Button } from 'co-ui';
 
-function Example() {
-  const [loading, setLoading] = useState(false);
+function App() {
+  const [loading, setLoading] = React.useState(false);
   
   return (
     <div className="example">
@@ -39,5 +38,5 @@ function Example() {
   );
 }
 
-ReactDOM.render(<Example />, mountNode);
+ReactDOM.render(<App />, mountNode);
 ```
