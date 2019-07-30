@@ -5,7 +5,7 @@ import { getPrefixCls } from '../_utils/config';
 
 const prefixCls = getPrefixCls('btn-group');
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface Props extends HTMLAttributes<HTMLDivElement> {
   children: React.ReactElement<Button>[];
   size?: Size;
 }

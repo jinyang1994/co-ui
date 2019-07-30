@@ -6,7 +6,7 @@ import { getPrefixCls } from '../_utils/config';
 
 const prefixCls = getPrefixCls('switch');
 
-interface Props extends Omit<DOMAttributes<HTMLInputElement>, 'onChange'> {
+export interface Props extends Omit<DOMAttributes<HTMLInputElement>, 'onChange'> {
   value?: boolean;
   size?: 'large' | 'small';
   disabled?: boolean;
