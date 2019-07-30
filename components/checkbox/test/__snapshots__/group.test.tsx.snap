@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`checkbox group feature renders correctly 1`] = `
+<div
+  class="co-checkbox-group"
+>
+  <div>
+    <label
+      class="co-checkbox co-checkbox-checked"
+    >
+      <span
+        class="co-checkbox-element"
+      >
+        <input
+          checked=""
+          type="checkbox"
+          value="foo"
+        />
+      </span>
+      <span
+        class="co-checkbox-text"
+      >
+        Foo
+      </span>
+    </label>
+  </div>
+  <div>
+    <label
+      class="co-checkbox"
+    >
+      <span
+        class="co-checkbox-element"
+      >
+        <input
+          type="checkbox"
+          value="bar"
+        />
+      </span>
+      <span
+        class="co-checkbox-text"
+      >
+        Bar
+      </span>
+    </label>
+  </div>
+</div>
+`;

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`checkbox disabled feature renders correctly 1`] = `
+<label
+  class="co-checkbox co-checkbox-disabled"
+>
+  <span
+    class="co-checkbox-element"
+  >
+    <input
+      disabled=""
+      type="checkbox"
+    />
+  </span>
+  <span
+    class="co-checkbox-text"
+  >
+    Checkbox disabled
+  </span>
+</label>
+`;
