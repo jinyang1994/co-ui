@@ -15,9 +15,10 @@ Switching Selector.
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| checked | determine whether the `Switch` is checked | boolean | false |
+| value | determine whether the `Switch` is value | boolean | false |
 | disabled | Disable switch | boolean | false |
 | loading | loading state of switch | boolean | false |
 | size | the size of button | 'large' \| 'small' | - |
+| name | The `name` property of switch | string | - |
 | onChange | trigger when the checked state is changing | Function(checked: boolean, event: Event) |  |
 | className | additional class to Switch | string | - |

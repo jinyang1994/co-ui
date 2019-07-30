@@ -16,10 +16,11 @@ title: Switch
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| value | 指定当前是否选中 | boolean | false |
+| value | 指定当前是否打开 | boolean | false |
 | disabled | 是否禁用 | boolean | false |
 | loading | 加载中的开关 | boolean | false |
 | size | 按钮的大小 | 'large' \| 'small' | - |
+| name | 开关的 `name` 属性 | string | - |
 | onChange | 变化时回调函数 | Function(checked: boolean, event: Event) |  |
 | className | Switch 器类名 | string | - |
 

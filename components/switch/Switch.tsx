@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, ChangeEvent } from 'react';
+import React, { ChangeEvent, DOMAttributes, CSSProperties } from 'react';
 import classNames from 'classnames';
 import Icon from '../icon';
 import { runCallback } from '../_utils/function';
@@ -6,10 +6,12 @@ import { getPrefixCls } from '../_utils/config';
 
 const prefixCls = getPrefixCls('switch');
 
-interface Props extends Omit<HTMLAttributes<HTMLInputElement>, 'onChange'> {
+interface Props extends Omit<DOMAttributes<HTMLInputElement>, 'onChange'> {
   value?: boolean;
   size?: 'large' | 'small';
   disabled?: boolean;
+  name?: string;
+  style?: CSSProperties;
   loading?: boolean;
   className?: string;
   onChange?: (value: boolean, e: ChangeEvent<HTMLInputElement>) => void;
