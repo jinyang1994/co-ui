@@ -24,9 +24,9 @@ function CheckboxGroup(props: Props) {
   const { className, style, children, name, disabled, onChange } = props;
   let value = props.value || [];
   const classes = classNames(prefixCls, className);
-  if (!is.array(props.value)) {
+  if (!is.array(value)) {
     warning(false, 'checkbox-group', 'value is not an array');
-    value = Array(toString(props.value));
+    value = Array(toString(value));
   }
   function handleChange(_: string, e: ChangeEvent<HTMLInputElement>) {
     const selected = e.target.value;
