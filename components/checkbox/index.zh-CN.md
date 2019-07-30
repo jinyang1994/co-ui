@@ -22,7 +22,7 @@ title: Checkbox
 | --- | --- | --- | --- |
 | checked | 指定当前是否选中 | boolean | false  |
 | disabled | 失效状态 | boolean | false  |
-| onChange | 变化时回调函数 | Function(e:Event) | - |
+| onChange | 变化时回调函数 | Function(value:string, e:Event) | - |
 | value | `input[type="checkbox"]` 的 `value` 属性 | string | - |
 | name | `input[type="checkbox"]` 的 `name` 属性 | string | - |
 
@@ -33,7 +33,7 @@ title: Checkbox
 | disabled | 整组失效 | boolean | false |
 | name | CheckboxGroup 下所有 `input[type="checkbox"]` 的 `name` 属性 | string | - |
 | value | 指定选中的选项 | string\[] | \[] |
-| onChange | 变化时回调函数 | Function(checkedValue) | - |
+| onChange | 变化时回调函数 | Function(checkedValue: string[]) | - |
 
 ### 方法
 
