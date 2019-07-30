@@ -1,9 +1,7 @@
-export function is(func: any): boolean {
-  return func && typeof func === 'function';
-}
+import * as is from './is';
 
 export function runCallback(func: any, ...args: any[]) {
-  if (is(func)) {
+  if (is.func(func)) {
     func(...args);
   }
 }

@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`checkbox basic feature renders correctly 1`] = `
+<label
+  class="co-checkbox"
+>
+  <span
+    class="co-checkbox-element"
+  >
+    <input
+      type="checkbox"
+    />
+  </span>
+  <span
+    class="co-checkbox-text"
+  />
+</label>
+`;
+
+exports[`checkbox basic feature renders correctly 2`] = `
+<label
+  class="co-checkbox"
+>
+  <span
+    class="co-checkbox-element"
+  >
+    <input
+      type="checkbox"
+    />
+  </span>
+  <span
+    class="co-checkbox-text"
+  >
+    Checkbox
+  </span>
+</label>
+`;
