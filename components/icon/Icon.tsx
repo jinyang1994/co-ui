@@ -7,7 +7,7 @@ import warning from '../_utils/warning';
 
 const prefixCls = getPrefixCls('icon');
 
-interface Props extends Omit<ComponentProps<typeof MdiIcon>, 'path'> {
+export interface Props extends Omit<ComponentProps<typeof MdiIcon>, 'path'> {
   name: string;
 }
 

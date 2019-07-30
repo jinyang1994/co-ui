@@ -1,5 +1,5 @@
-import Button from './Button';
-import ButtonGroup from './ButtonGroup';
+import Button, { Props as ButtonProps } from './Button';
+import ButtonGroup, { Props as ButtonGroupProps } from './ButtonGroup';
 
-export { ButtonGroup };
+export { ButtonGroup, ButtonProps, ButtonGroupProps };
 export default Button;

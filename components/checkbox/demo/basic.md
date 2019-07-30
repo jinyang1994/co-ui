@@ -20,12 +20,19 @@ function App() {
   const [checked, setChecked] = React.useState(true);
   
   return (
-    <Checkbox 
-      checked={checked} 
-      onChange={(nextChecked) => setChecked(nextChecked)}
-    >
-      Checkbox
-    </Checkbox>
+    <>
+      <Checkbox 
+        checked={checked} 
+        onChange={(nextChecked) => setChecked(nextChecked)}
+      >
+        Checkbox
+      </Checkbox>
+      <Checkbox 
+        checked={checked} 
+       
+        onChange={(nextChecked) => setChecked(nextChecked)}
+      />  
+    </>
   );
 }
 
