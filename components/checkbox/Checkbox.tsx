@@ -1,4 +1,4 @@
-import React, { Component, createRef, DOMAttributes, CSSProperties, ChangeEvent, RefObject } from 'react';
+import React, { Component, createRef, DOMAttributes, CSSProperties, ReactChild, ChangeEvent, RefObject } from 'react';
 import classNames from 'classnames';
 import CheckboxGroup from './CheckboxGroup';
 import { runCallback } from '../_utils/function';
@@ -13,6 +13,7 @@ export interface Props extends Omit<DOMAttributes<HTMLInputElement>, 'onChange'>
   style?: CSSProperties;
   name?: string;
   disabled?: boolean;
+  children?: ReactChild | ReactChild[],
   onChange?: (value: string, e: ChangeEvent<HTMLInputElement>) => void;
   forwardedRef?: RefObject<HTMLInputElement>;
 }
@@ -23,7 +24,6 @@ class Checkbox extends Component<Props> {
   private ref: RefObject<HTMLInputElement>;
   constructor(props: Props) {
     super(props);
-
     this.ref = createRef();
     this.handleChange = this.handleChange.bind(this);
   }
