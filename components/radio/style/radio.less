@@ -1,11 +1,11 @@
-@checkbox-prefix: ~"@{prefix}-checkbox";
+@radio-prefix: ~"@{prefix}-radio";
 
-.@{checkbox-prefix} {
+.@{radio-prefix} {
   display: inline-block;
   vertical-align: top;
   cursor: pointer;
 
-  .@{checkbox-prefix}-element {
+  .@{radio-prefix}-element {
     position: relative;
     display: inline-block;
     width: 16px;
@@ -13,7 +13,7 @@
     vertical-align: middle;
     background: @basic-color-white-base;
     border: @border-width @border-style @border-color;
-    border-radius: @border-radius-small;
+    border-radius: 50%;
     transition: border-color @transition-date-base, background-color @transition-date-base, box-shadow @transition-date-base;
 
     input {
@@ -21,22 +21,24 @@
     }
 
     &::before {
-      position: relative;
-      top: 3px;
-      left: 2px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
       display: block;
-      width: 10px;
-      height: 6px;
-      border-bottom: 2px solid @basic-color-white-base;
-      border-left: 2px solid @basic-color-white-base;
-      transform: rotate(-45deg);
+      width: 8px;
+      height: 8px;
+      margin-top: -4px;
+      margin-left: -4px;
+      background: @basic-color-white-base;
+      border-radius: 50%;
+      box-shadow: @box-shadow-1;
       opacity: 0;
       transition: opacity @transition-date-base;
       content: '';
     }
   }
 
-  .@{checkbox-prefix}-text {
+  .@{radio-prefix}-text {
     display: inline-block;
     margin-left: 8px;
     color: @basic-color-grey-dark;
@@ -49,8 +51,8 @@
     margin-left: 10px;
   }
 
-  &.@{checkbox-prefix}-checked {
-    .@{checkbox-prefix}-element {
+  &.@{radio-prefix}-checked {
+    .@{radio-prefix}-element {
       background: @theme-color-primary-default;
       border-color: @theme-color-primary-default;
 
@@ -60,24 +62,24 @@
     }
   }
 
-  &.@{checkbox-prefix}-disabled {
+  &.@{radio-prefix}-disabled {
     cursor: not-allowed;
     opacity: @disabled-opacity;
 
-    .@{checkbox-prefix}-element {
+    .@{radio-prefix}-element {
       background: @disabled-bg-color;
       border-color: @border-color;
     }
   }
 
-  &:not(.@{checkbox-prefix}-disabled):hover {
-    .@{checkbox-prefix}-element {
+  &:not(.@{radio-prefix}-disabled):hover {
+    .@{radio-prefix}-element {
       border-color: @theme-color-primary-default;
     }
   }
 
-  &:not(.@{checkbox-prefix}-disabled):active {
-    .@{checkbox-prefix}-element {
+  &:not(.@{radio-prefix}-disabled):active {
+    .@{radio-prefix}-element {
       box-shadow: @box-shadow-primary;
     }
   }

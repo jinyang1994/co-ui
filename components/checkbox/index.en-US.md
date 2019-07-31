@@ -22,8 +22,8 @@ Checkbox component.
 | checked | Specifies whether the checkbox is selected. | boolean | false |
 | disabled | Disable checkbox | boolean | false |
 | onChange | The callback function that is triggered when the state changes. | Function(value:string, e:Event) | - |
-| value | The `value` property of all `input[type="checkbox"]` | string | - |
-| name | The `name` property of all `input[type="checkbox"]` | string | - |
+| value | The `value` property of `input[type="checkbox"]` | string | - |
+| name | The `name` property of `input[type="checkbox"]` | string | - |
 
 #### Checkbox Group
 

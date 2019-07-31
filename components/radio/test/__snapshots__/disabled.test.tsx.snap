@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`radio disabled feature renders correctly 1`] = `
+<label
+  class="co-radio co-radio-disabled"
+>
+  <span
+    class="co-radio-element"
+  >
+    <input
+      disabled=""
+      type="radio"
+    />
+  </span>
+  <span
+    class="co-radio-text"
+  />
+</label>
+`;

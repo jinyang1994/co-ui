@@ -1,25 +1,25 @@
-import React, { Component, createRef, DOMAttributes, CSSProperties, ReactChild, ChangeEvent, RefObject } from 'react';
+import React, { Component, createRef, DOMAttributes, CSSProperties, ChangeEvent, RefObject, ReactText } from 'react';
 import classNames from 'classnames';
-import CheckboxGroup from './CheckboxGroup';
+import RadioGroup from './RadioGroup';
 import { runCallback } from '../_utils/function';
 import { getPrefixCls } from '../_utils/config';
 
-const prefixCls = getPrefixCls('checkbox');
+const prefixCls = getPrefixCls('radio');
 
 export interface Props extends Omit<DOMAttributes<HTMLInputElement>, 'onChange'> {
-  value?: string;
-  className?: string;
-  checked?: boolean;
-  style?: CSSProperties;
+  value?: any;
   name?: string;
+  checked?: boolean;
   disabled?: boolean;
-  children?: ReactChild | ReactChild[],
-  onChange?: (value: string, e: ChangeEvent<HTMLInputElement>) => void;
+  children?: ReactText,
+  className?: string;
+  style?: CSSProperties;
+  onChange?: (value: any, e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-class Checkbox extends Component<Props> {
-  static Group = CheckboxGroup;
-  static isCheckbox = true;
+class Radio extends Component<Props> {
+  static Group = RadioGroup;
+  static isRadio = true;
   private readonly ref: RefObject<HTMLInputElement>;
   constructor(props: Props) {
     super(props);
@@ -36,14 +36,14 @@ class Checkbox extends Component<Props> {
   }
 
   handleChange(e: ChangeEvent<HTMLInputElement>) {
-    const { disabled, onChange } = this.props;
+    const { onChange, disabled, value } = this.props;
 
     if (disabled) return;
-    runCallback(onChange, e.target.checked, e);
+    runCallback(onChange, value, e);
   }
 
   render() {
-    const { children, className, style, disabled, checked, ...checkboxProps } = this.props;
+    const { children, className, checked, name, disabled, style, ...radioProps } = this.props;
     const classes = classNames(prefixCls, {
       [`${prefixCls}-checked`]: checked,
       [`${prefixCls}-disabled`]: disabled,
@@ -53,10 +53,11 @@ class Checkbox extends Component<Props> {
       <label className={classes} style={style}>
         <span className={`${prefixCls}-element`}>
           <input
-            {...checkboxProps}
-            type="checkbox"
-            checked={checked}
+            {...radioProps}
+            name={name}
             disabled={disabled}
+            checked={checked}
+            type="radio"
             onChange={this.handleChange}
             ref={this.ref}
           />
@@ -69,4 +70,4 @@ class Checkbox extends Component<Props> {
   }
 }
 
-export default Checkbox;
+export default Radio;
