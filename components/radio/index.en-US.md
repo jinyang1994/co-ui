@@ -15,7 +15,7 @@ Radio.
 
 ### Radio
 
-| Property | Description | Type | Default | Version |
+| Property | Description | Type | Default |
 | --- | --- | --- | --- | --- |
 | checked | Specifies whether the radio is selected. | boolean | false  |
 | value | According to value for comparison, to determine whether the selected | any | - |
@@ -27,7 +27,7 @@ Radio.
 
 Radio group can wrap a group of `Radio`。
 
-| Property | Description | Type | Default | Version |
+| Property | Description | Type | Default |
 | --- | --- | --- | --- | --- |
 | disabled | Default selected value | boolean | false |
 | name | The `name` property of all `input[type="radio"]` children | string | - |
