@@ -15,13 +15,12 @@ export interface Props extends Omit<DOMAttributes<HTMLInputElement>, 'onChange'>
   disabled?: boolean;
   children?: ReactChild | ReactChild[],
   onChange?: (value: string, e: ChangeEvent<HTMLInputElement>) => void;
-  forwardedRef?: RefObject<HTMLInputElement>;
 }
 
 class Checkbox extends Component<Props> {
   static Group = CheckboxGroup;
   static isCheckbox = true;
-  private ref: RefObject<HTMLInputElement>;
+  private readonly ref: RefObject<HTMLInputElement>;
   constructor(props: Props) {
     super(props);
     this.ref = createRef();
