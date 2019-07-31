@@ -33,7 +33,7 @@ module.exports = {
     config.plugins.push(
       new CopyWebpackPlugin([
         {
-          from: path.join(process.cwd(), 'site/theme/static'),
+          from: path.join(process.cwd(), 'site/static'),
           to: 'public',
           ignore: ['.*']
         },
