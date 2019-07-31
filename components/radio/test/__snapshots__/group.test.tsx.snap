@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`radio group feature renders correctly 1`] = `
+<div
+  class="co-radio-group"
+>
+  <label
+    class="co-radio"
+  >
+    <span
+      class="co-radio-element"
+    >
+      <input
+        type="radio"
+        value="foo"
+      />
+    </span>
+    <span
+      class="co-radio-text"
+    >
+      Foo
+    </span>
+  </label>
+  <label
+    class="co-radio"
+  >
+    <span
+      class="co-radio-element"
+    >
+      <input
+        type="radio"
+        value="bar"
+      />
+    </span>
+    <span
+      class="co-radio-text"
+    >
+      Bar
+    </span>
+  </label>
+</div>
+`;

@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`radio basic feature renders correctly 1`] = `
+<label
+  class="co-radio"
+>
+  <span
+    class="co-radio-element"
+  >
+    <input
+      type="radio"
+    />
+  </span>
+  <span
+    class="co-radio-text"
+  >
+    Radio
+  </span>
+</label>
+`;
+
+exports[`radio basic feature renders correctly 2`] = `
+<label
+  class="co-radio co-radio-checked"
+>
+  <span
+    class="co-radio-element"
+  >
+    <input
+      checked=""
+      type="radio"
+    />
+  </span>
+  <span
+    class="co-radio-text"
+  />
+</label>
+`;
