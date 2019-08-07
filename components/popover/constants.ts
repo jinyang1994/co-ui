@@ -1,0 +1,9 @@
+export const START = 'start';
+export const END = 'end';
+export const TOP = 'top';
+export const LEFT = 'left';
+export const RIGHT = 'right';
+export const BOTTOM = 'bottom';
+export const HOVER = 'hover';
+export const CLICK = 'click';
+export const FOCUS = 'focus';
