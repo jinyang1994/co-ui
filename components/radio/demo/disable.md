@@ -14,24 +14,14 @@ Radio 不可用。
 Radio unavailable.
 
 ```jsx
-import { Radio, Button } from 'co-ui';
+import { Radio } from 'co-ui';
 
-function App() {
-  const [disabled, setDisabled] = React.useState(true);
-  
+function App() {  
   return (
-    <>
-      <Radio disabled={disabled}>Disabled</Radio>
-      <Radio disabled={disabled} checked>Disabled Checked</Radio>
-      <div style={{ marginTop: 20 }}>
-        <Button 
-          type="primary" 
-          onClick={() => setDisabled(!disabled)}
-        >
-          Toggle Disabled
-        </Button>
-      </div> 
-    </>
+    <div>
+      <Radio disabled>Disabled</Radio>
+      <Radio disabled checked>Disabled Checked</Radio>
+    </div>
   );
 }
 
