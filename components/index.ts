@@ -4,3 +4,4 @@ export { default as Switch } from './switch';
 export { default as Checkbox } from './checkbox';
 export { default as Radio } from './radio';
 export { default as Popover } from './popover';
+export { CSSTransition, TransitionGroup, Transition, SwitchTransition } from './transition';
