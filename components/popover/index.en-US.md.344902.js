@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[15],{591:function(e,p){e.exports={content:["article",["p","Popper."]],meta:{category:"Components",type:"Data Display",title:"Popper",filename:"components/popover/index.en-US.md"}}}}]);

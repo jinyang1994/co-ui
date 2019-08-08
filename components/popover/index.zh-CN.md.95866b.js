@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[16],{592:function(e,o){e.exports={content:["article",["p","弹出工具。"]],meta:{category:"Components",subtitle:"弹出工具",type:"数据展示",title:"Popper",filename:"components/popover/index.zh-CN.md"}}}}]);
