@@ -28,8 +28,7 @@ function App() {
         Checkbox
       </Checkbox>
       <Checkbox 
-        checked={checked} 
-       
+        checked={checked}
         onChange={(nextChecked) => setChecked(nextChecked)}
       />  
     </>
