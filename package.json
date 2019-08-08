@@ -37,7 +37,7 @@
     "lint": "npm run lint:ts && npm run lint:es && npm run lint:demo && npm run lint:style",
     "lint:ts": "tslint -c tslint.json -p tsconfig.json 'components/**/*.{ts,tsx}'",
     "lint:es": "eslint site build --ext '.js,.jsx'",
-    "lint:demo": "cross-env RUN_ENV=DEMO eslint components --ext '.md'",
+    "lint:demo": "cross-env RUN_ENV=DEMO eslint components/*/demo/*.md --ext '.md'",
     "lint:style": "stylelint '{site,components}/**/*.less' --syntax less",
     "test": "jest -c .jest.json --no-cache",
     "test:cov": "jest -c .jest.json --coverage --no-cache",

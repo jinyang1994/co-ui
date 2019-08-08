@@ -43,6 +43,7 @@ function Colors() {
       className: styles.basic,
       items: [
         { name: 'Black', style: styles.black },
+        { name: 'Extra dark grey', style: classNames(styles.grey, styles.dark, styles.extra) },
         { name: 'Dark grey', style: classNames(styles.grey, styles.dark) },
         { name: 'Grey', style: styles.grey },
         { name: 'Light grey', style: classNames(styles.grey, styles.light) },
