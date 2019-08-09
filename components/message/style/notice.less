@@ -1,0 +1,72 @@
+@notice-prefix: ~"@{prefix}-notice";
+
+.@{notice-prefix} {
+  margin-bottom: 15px;
+  padding: 13px 16px;
+  color: @basic-color-grey-dark;
+  font-weight: 500;
+  font-size: @font-size-base;
+  background: @basic-color-white-base;
+  border-radius: @border-radius-base;
+  box-shadow: @box-shadow-2;
+  pointer-events: all;
+
+
+  .@{notice-prefix}-icon {
+    color: @theme-color-primary-default;
+    font-size: 18px;
+    vertical-align: middle;
+
+    & + .@{notice-prefix}-text {
+      margin-left: 8px;
+
+      & + .@{notice-prefix}-close {
+        margin-right: -8px;
+      }
+    }
+
+    .@{notice-prefix}-success & {
+      color: @theme-color-success-default;
+    }
+  }
+
+  .@{notice-prefix}-text {
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+  .@{notice-prefix}-close {
+    display: inline-block;
+    margin-left: 12px;
+    padding: 0;
+    color: inherit;
+    line-height: 1;
+    vertical-align: middle;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    > * {
+      font-size: 18px;
+      vertical-align: top;
+    }
+  }
+
+  .notice-type-color(success, @theme-color-success-default);
+  .notice-type-color(error, @theme-color-danger-default);
+  .notice-type-color(warning, @theme-color-warning-default);
+  .notice-type-color(info, @theme-color-info-default);
+}
+
+.notice-type-color(@type, @color) {
+  &.@{notice-prefix}-@{type} {
+    padding-right: 22px;
+    color: #fff;
+    background: @color;
+
+    .@{notice-prefix}-icon {
+      color: #fff;
+    }
+  }
+}

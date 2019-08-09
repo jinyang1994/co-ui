@@ -1,5 +1,5 @@
 import React, { cloneElement, createRef, useState, ReactElement, ReactNode } from 'react';
-import { CSSTransition } from 'react-transition-group';
+import { CSSTransition } from '../transition';
 import { TOP, CLICK } from './constants';
 import Popper, { Props as PopperProps, Placement } from './Popper';
 import Trigger, { Props as TriggerProps, Trigger as TriggerType } from './Trigger';
