@@ -1,86 +1,129 @@
 @popper-prefix: ~"@{prefix}-popper";
 
-@size: 7px;
+@arrow-size: 7px;
 
 .@{popper-prefix} {
   padding: 8px;
-  background: @basic-color-white-base;
-  border: @border-width @border-style @border-color;
+  border: @border-width @border-style transparent;
   border-radius: @border-radius-base;
   box-shadow: @box-shadow-1;
 
   .@{popper-prefix}-arrow {
     position: absolute;
-    bottom: -@size;
+    bottom: -@arrow-size;
     width: 0;
     height: 0;
-    border: @size solid transparent;
+    border: @arrow-size solid transparent;
 
     &::after {
       position: absolute;
       z-index: 2;
       display: block;
-      border: @size solid transparent;
+      border: @arrow-size solid transparent;
       content: '';
     }
   }
 
   &[data-placement^="top"] {
-    margin-bottom: @size;
+    margin-bottom: @arrow-size;
 
     .@{popper-prefix}-arrow {
-      bottom: -@size * 2;
-      border-top-color: @border-color;
+      bottom: -@arrow-size * 2;
 
       &::after {
-        bottom: -@size + 1;
-        left: -@size;
-        border-top-color: @basic-color-white-base;
+        bottom: -@arrow-size + 1;
+        left: -@arrow-size;
       }
     }
   }
 
   &[data-placement^="left"] {
-    margin-right: @size;
+    margin-right: @arrow-size;
 
     .@{popper-prefix}-arrow {
-      right: -@size * 2;
-      border-left-color: @border-color;
+      right: -@arrow-size * 2;
 
       &::after {
-        right: -@size + 1;
-        bottom: -@size;
-        border-left-color: @basic-color-white-base;
+        right: -@arrow-size + 1;
+        bottom: -@arrow-size;
       }
     }
   }
 
   &[data-placement^="right"] {
-    margin-left: @size;
+    margin-left: @arrow-size;
 
     .@{popper-prefix}-arrow {
-      left: -@size * 2;
-      border-right-color: @border-color;
+      left: -@arrow-size * 2;
 
       &::after {
-        bottom: -@size;
-        left: -@size + 1;
-        border-right-color: @basic-color-white-base;
+        bottom: -@arrow-size;
+        left: -@arrow-size + 1;
       }
     }
   }
 
   &[data-placement^="bottom"] {
-    margin-top: @size;
+    margin-top: @arrow-size;
 
     .@{popper-prefix}-arrow {
-      top: -@size * 2;
+      top: -@arrow-size * 2;
+
+      &::after {
+        top: -@arrow-size + 1;
+        left: -@arrow-size;
+      }
+    }
+  }
+
+  .popper-placement-color(@basic-color-grey-dark, @basic-color-white-base, @border-color);
+
+  &.@{popper-prefix}-dark {
+    .popper-placement-color(@basic-color-white-base, @basic-color-black-base, @basic-color-black-base);
+  }
+}
+
+.popper-placement-color(@color, @bg-color, @border-color) {
+  color: @color;
+  background: @bg-color;
+  border-color: @border-color;
+
+  &[data-placement^="top"] {
+    .@{popper-prefix}-arrow {
+      border-top-color: @border-color;
+
+      &::after {
+        border-top-color: @bg-color;
+      }
+    }
+  }
+
+  &[data-placement^="left"] {
+    .@{popper-prefix}-arrow {
+      border-left-color: @border-color;
+
+      &::after {
+        border-left-color: @bg-color;
+      }
+    }
+  }
+
+  &[data-placement^="right"] {
+    .@{popper-prefix}-arrow {
+      border-right-color: @border-color;
+
+      &::after {
+        border-right-color: @bg-color;
+      }
+    }
+  }
+
+  &[data-placement^="bottom"] {
+    .@{popper-prefix}-arrow {
       border-bottom-color: @border-color;
 
       &::after {
-        top: -@size + 1;
-        left: -@size;
-        border-bottom-color: @basic-color-white-base;
+        border-bottom-color: @bg-color;
       }
     }
   }
