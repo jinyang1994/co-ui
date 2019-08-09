@@ -1,5 +1,6 @@
 import { cloneElement, ReactElement } from 'react';
 import { HOVER, CLICK, FOCUS } from './constants';
+import { runCallback } from '../_utils/function';
 
 export type Trigger = typeof HOVER | typeof CLICK | typeof FOCUS;
 
@@ -12,24 +13,32 @@ export interface Props {
 
 function Trigger(props: Props) {
   const { children, active, trigger = [CLICK], onTrigger } = props;
+  const childrenProps = children.props;
   const triggerList = Array.isArray(trigger) ? trigger : [trigger];
   const eventHandlers: {
-    [event: string]: () => void;
+    [event: string]: (e: Event) => void;
   } = {};
-  const hasHover = triggerList.indexOf(HOVER) !== -1;
-  const hasClick = triggerList.indexOf(CLICK) !== -1;
-  const hasFocus = triggerList.indexOf(FOCUS) !== -1;
+  const hasHoverTrigger = triggerList.indexOf(HOVER) !== -1;
+  const hasClickTrigger = triggerList.indexOf(CLICK) !== -1;
+  const hasFocusTrigger = triggerList.indexOf(FOCUS) !== -1;
+  function handleTrigger(eventName: string, value: boolean) {
+    eventHandlers[eventName] = (e: Event, ...args: any) => {
+      runCallback(childrenProps[eventName], ...args);
+      onTrigger(value);
+      e.stopPropagation();
+    };
+  }
 
-  if (hasHover) {
-    eventHandlers.onMouseEnter = () => onTrigger(true);
-    eventHandlers.onMouseLeave = () => onTrigger(false);
+  if (hasHoverTrigger) {
+    handleTrigger('onMouseEnter', true);
+    handleTrigger('onMouseLeave', false);
   }
-  if (hasClick) {
-    eventHandlers.onClick = () => onTrigger(!active);
+  if (hasClickTrigger) {
+    handleTrigger('onClick', !active);
   }
-  if (hasFocus) {
-    eventHandlers.onFocus = () => onTrigger(true);
-    eventHandlers.onBlur = () => onTrigger(false);
+  if (hasFocusTrigger) {
+    handleTrigger('onFocus', true);
+    handleTrigger('onBlur', false);
   }
 
   return cloneElement(children, eventHandlers);

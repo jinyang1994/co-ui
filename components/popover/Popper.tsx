@@ -1,6 +1,5 @@
 import React, { createRef, Component, RefObject, ReactNode } from 'react';
 import classNames from 'classnames';
-import Portal from '../portal';
 import { TOP, LEFT, BOTTOM, RIGHT, START, END } from './constants';
 import {
   isFixed,
@@ -52,6 +51,8 @@ export interface Props {
   className?: string;
   getTarget: () => HTMLElement;
   getContainer?: () => HTMLElement;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 interface State {
   placement: Placement;
@@ -67,8 +68,8 @@ interface State {
 }
 
 class Popper extends Component<Props, State> {
+  public readonly popper: RefObject<HTMLDivElement>;
   private readonly arrow: RefObject<HTMLDivElement>;
-  private readonly popper: RefObject<HTMLDivElement>;
   private readonly options: {
     boundariesElement: BoundariesElement;
     boundariesPadding: BoundariesPadding;
@@ -142,25 +143,23 @@ class Popper extends Component<Props, State> {
   }
 
   render() {
-    const { children, className, arrow, getContainer } = this.props;
+    const { children, className, arrow, onMouseLeave, onMouseEnter } = this.props;
     const { placement, position } = this.state;
     const { top, left } = this.state.popper;
     const classes = classNames(prefixCls, className);
 
     return (
-      <>
-        <Portal getContainer={getContainer}>
-          <div
-            ref={this.popper}
-            className={classes}
-            style={{ position, top, left, zIndex: 100000 }}
-            data-placement={placement.length === 2 ? placement.join('-') : placement[0]}
-          >
-            {arrow && this.renderArrow()}
-            {children}
-          </div>
-        </Portal>
-      </>
+      <div
+        ref={this.popper}
+        className={classes}
+        onMouseLeave={onMouseLeave}
+        onMouseEnter={onMouseEnter}
+        style={{ position, top, left, zIndex: 100000 }}
+        data-placement={placement.length === 2 ? placement.join('-') : placement[0]}
+      >
+        {arrow && this.renderArrow()}
+        {children}
+      </div>
     );
   }
 

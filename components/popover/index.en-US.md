@@ -1,7 +1,7 @@
 ---
 category: Components
 type: Data Display
-title: Popper
+title: Popover
 ---
 
-Popper.
+Popover.
