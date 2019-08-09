@@ -66,7 +66,13 @@ function App() {
         trigger={trigger}
         content={<div className="content">popper</div>}       
       >
-        <input className="target" placeholder="Target" /> 
+        <button 
+          type="button"
+          onClick={() => console.log('Click button')} 
+          className="target"
+        >
+          Target 
+        </button> 
       </Popover>
     </>
   );
@@ -79,6 +85,7 @@ ReactDOM.render(<App />, mountNode);
 .target {
   display: block;
   max-width: 200px;
+  width: 100%;
   height: 40px;
   box-sizing: border-box;
   margin: 40px auto 0;
