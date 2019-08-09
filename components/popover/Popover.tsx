@@ -1,6 +1,6 @@
 import React, { cloneElement, createRef, useState, useEffect, ReactElement, ReactNode } from 'react';
 import { CSSTransition } from '../transition';
-import { TOP, CLICK } from './constants';
+import { TOP } from './constants';
 import Portal from '../portal';
 import Popper, { Props as PopperProps, Placement } from './Popper';
 import Trigger, { Props as TriggerProps, Trigger as TriggerType } from './Trigger';
@@ -9,14 +9,14 @@ import { getPrefixCls } from '../_utils/config';
 
 const prefixCls = getPrefixCls('popover');
 
-type Props = Pick<TriggerProps, 'trigger'> & Pick<PopperProps, 'placement' | 'options' | 'getContainer'> & {
+type Props = Pick<TriggerProps, 'trigger'> & Pick<PopperProps, 'arrow' | 'placement' | 'options' | 'getContainer'> & {
   children: ReactElement;
   content: ReactNode | ReactNode[];
   className?: string;
 }
 
 function Popover(props: Props) {
-  const { children, content, className, trigger = [CLICK], placement = [TOP], getContainer, ...popperProps } = props;
+  const { children, content, className, trigger, placement = [TOP], getContainer, ...popperProps } = props;
   const [direction] = placement;
   const [active, setActive] = useState(false);
   let timer: ReturnType<typeof setTimeout> | null = null;
