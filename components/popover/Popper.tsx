@@ -46,6 +46,7 @@ interface Data {
 export interface Props {
   children: ReactNode | ReactNode[];
   arrow?: boolean;
+  theme?: 'dark' | 'light';
   options?: Options;
   placement?: Placement;
   className?: string;
@@ -143,10 +144,12 @@ class Popper extends Component<Props, State> {
   }
 
   render() {
-    const { children, className, arrow, onMouseLeave, onMouseEnter } = this.props;
+    const { children, className, arrow, theme, onMouseLeave, onMouseEnter } = this.props;
     const { placement, position } = this.state;
     const { top, left } = this.state.popper;
-    const classes = classNames(prefixCls, className);
+    const classes = classNames(prefixCls, {
+      [`${prefixCls}-dark`]: theme === 'dark',
+    }, className);
 
     return (
       <div

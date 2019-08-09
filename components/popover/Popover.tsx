@@ -9,7 +9,7 @@ import { getPrefixCls } from '../_utils/config';
 
 const prefixCls = getPrefixCls('popover');
 
-type Props = Pick<TriggerProps, 'trigger'> & Pick<PopperProps, 'arrow' | 'placement' | 'options' | 'getContainer'> & {
+type Props = Pick<TriggerProps, 'trigger'> & Pick<PopperProps, 'arrow' | 'theme' | 'placement' | 'options' | 'getContainer'> & {
   children: ReactElement;
   content: ReactNode | ReactNode[];
   className?: string;
