@@ -8,7 +8,7 @@ export interface Props {
   children: ReactElement;
   active: boolean;
   onTrigger: (active: boolean) => void;
-  trigger: Trigger | Array<Trigger>;
+  trigger?: Trigger | Array<Trigger>;
 }
 
 function Trigger(props: Props) {
