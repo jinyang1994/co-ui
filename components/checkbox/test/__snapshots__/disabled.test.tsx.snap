@@ -11,6 +11,9 @@ exports[`checkbox disabled feature renders correctly 1`] = `
       disabled=""
       type="checkbox"
     />
+    <span
+      class="co-checkbox-inner"
+    />
   </span>
   <span
     class="co-checkbox-text"

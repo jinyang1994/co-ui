@@ -9,8 +9,12 @@ exports[`switch color feature renders correctly 1`] = `
       type="checkbox"
     />
     <span
-      class="co-switch-dot"
-    />
+      class="co-switch-element"
+    >
+      <span
+        class="co-switch-dot"
+      />
+    </span>
   </label>
   <label
     class="co-switch"
@@ -19,8 +23,12 @@ exports[`switch color feature renders correctly 1`] = `
       type="checkbox"
     />
     <span
-      class="co-switch-dot"
-    />
+      class="co-switch-element"
+    >
+      <span
+        class="co-switch-dot"
+      />
+    </span>
   </label>
   <label
     class="co-switch co-switch-small"
@@ -29,8 +37,12 @@ exports[`switch color feature renders correctly 1`] = `
       type="checkbox"
     />
     <span
-      class="co-switch-dot"
-    />
+      class="co-switch-element"
+    >
+      <span
+        class="co-switch-dot"
+      />
+    </span>
   </label>
 </div>
 `;

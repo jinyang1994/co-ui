@@ -11,28 +11,44 @@
     width: 16px;
     height: 16px;
     vertical-align: middle;
-    background: @basic-color-white-base;
-    border: @border-width @border-style @border-color;
-    border-radius: @border-radius-small;
-    transition: border-color @transition-date-base, background-color @transition-date-base, box-shadow @transition-date-base;
 
     input {
-      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      opacity: 0;
+
+      &:focus + .@{checkbox-prefix}-inner {
+        box-shadow: @box-shadow-primary;
+      }
     }
 
-    &::before {
+    .@{checkbox-prefix}-inner {
       position: relative;
-      top: 3px;
-      left: 2px;
       display: block;
-      width: 10px;
-      height: 6px;
-      border-bottom: 2px solid @basic-color-white-base;
-      border-left: 2px solid @basic-color-white-base;
-      transform: rotate(-45deg);
-      opacity: 0;
-      transition: opacity @transition-date-base;
-      content: '';
+      width: 100%;
+      height: 100%;
+      background: @basic-color-white-base;
+      border: @border-width @border-style @border-color;
+      border-radius: @border-radius-small;
+      transition: border-color @transition-date-base, background-color @transition-date-base, box-shadow @transition-date-base;
+
+      &::before {
+        position: relative;
+        top: 3px;
+        left: 2px;
+        display: block;
+        width: 10px;
+        height: 6px;
+        border-bottom: 2px solid @basic-color-white-base;
+        border-left: 2px solid @basic-color-white-base;
+        transform: rotate(-45deg);
+        opacity: 0;
+        transition: opacity @transition-date-base;
+        content: '';
+      }
     }
   }
 
@@ -50,7 +66,7 @@
   }
 
   &.@{checkbox-prefix}-checked {
-    .@{checkbox-prefix}-element {
+    .@{checkbox-prefix}-inner {
       background: @theme-color-primary-default;
       border-color: @theme-color-primary-default;
 
@@ -64,20 +80,20 @@
     cursor: not-allowed;
     opacity: @disabled-opacity;
 
-    .@{checkbox-prefix}-element {
+    .@{checkbox-prefix}-inner {
       background: @disabled-bg-color;
       border-color: @border-color;
     }
   }
 
   &:not(.@{checkbox-prefix}-disabled):hover {
-    .@{checkbox-prefix}-element {
+    .@{checkbox-prefix}-inner {
       border-color: @theme-color-primary-default;
     }
   }
 
   &:not(.@{checkbox-prefix}-disabled):active {
-    .@{checkbox-prefix}-element {
+    .@{checkbox-prefix}-inner {
       box-shadow: @box-shadow-primary;
     }
   }

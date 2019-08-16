@@ -43,8 +43,10 @@ function Switch(props: Props) {
         checked={checked}
         onChange={handleChange}
       />
-      <span className={`${prefixCls}-dot`}>
-        {loading && <Icon name="loading" className={`${prefixCls}-spin`} spin={0.8} />}
+      <span className={`${prefixCls}-element`}>
+        <span className={`${prefixCls}-dot`}>
+          {loading && <Icon name="loading" className={`${prefixCls}-spin`} spin={0.8} />}
+        </span>
       </span>
     </label>
   );

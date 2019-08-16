@@ -11,6 +11,9 @@ exports[`radio disabled feature renders correctly 1`] = `
       disabled=""
       type="radio"
     />
+    <span
+      class="co-radio-inner"
+    />
   </span>
   <span
     class="co-radio-text"

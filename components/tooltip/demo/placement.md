@@ -77,7 +77,7 @@ ReactDOM.render(<App />, mountNode);
 
 .text {
   font-size: 14px;
-  color: #778699;
+  color: #000;
   line-height: 1.57;
   font-weight: normal;
   margin: 0;
