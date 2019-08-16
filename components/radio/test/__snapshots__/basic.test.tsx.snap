@@ -10,6 +10,9 @@ exports[`radio basic feature renders correctly 1`] = `
     <input
       type="radio"
     />
+    <span
+      class="co-radio-inner"
+    />
   </span>
   <span
     class="co-radio-text"
@@ -29,6 +32,9 @@ exports[`radio basic feature renders correctly 2`] = `
     <input
       checked=""
       type="radio"
+    />
+    <span
+      class="co-radio-inner"
     />
   </span>
   <span

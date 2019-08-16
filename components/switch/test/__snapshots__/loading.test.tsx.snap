@@ -8,7 +8,11 @@ exports[`switch loading feature renders correctly 1`] = `
     type="checkbox"
   />
   <span
-    class="co-switch-dot"
-  />
+    class="co-switch-element"
+  >
+    <span
+      class="co-switch-dot"
+    />
+  </span>
 </label>
 `;

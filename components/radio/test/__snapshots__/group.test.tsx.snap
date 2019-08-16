@@ -14,6 +14,9 @@ exports[`radio group feature renders correctly 1`] = `
         type="radio"
         value="foo"
       />
+      <span
+        class="co-radio-inner"
+      />
     </span>
     <span
       class="co-radio-text"
@@ -30,6 +33,9 @@ exports[`radio group feature renders correctly 1`] = `
       <input
         type="radio"
         value="bar"
+      />
+      <span
+        class="co-radio-inner"
       />
     </span>
     <span

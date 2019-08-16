@@ -16,6 +16,9 @@ exports[`checkbox group feature renders correctly 1`] = `
           type="checkbox"
           value="foo"
         />
+        <span
+          class="co-checkbox-inner"
+        />
       </span>
       <span
         class="co-checkbox-text"
@@ -34,6 +37,9 @@ exports[`checkbox group feature renders correctly 1`] = `
         <input
           type="checkbox"
           value="bar"
+        />
+        <span
+          class="co-checkbox-inner"
         />
       </span>
       <span
