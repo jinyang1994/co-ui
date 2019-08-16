@@ -61,6 +61,7 @@ class Radio extends Component<Props> {
             onChange={this.handleChange}
             ref={this.ref}
           />
+          <span className={`${prefixCls}-inner`} />
         </span>
         <span className={`${prefixCls}-text`}>
           {children}

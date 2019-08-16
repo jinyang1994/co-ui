@@ -29,6 +29,10 @@
       border-color: @theme-color-primary-dark;
       box-shadow: @box-shadow-primary;
     }
+
+    &:focus {
+      box-shadow: @box-shadow-1;
+    }
   }
 
   &.@{btn-prefix}-fill {
@@ -46,6 +50,10 @@
         color: @basic-color-white-base;
         background: @basic-color-black-base;
         border-color: @basic-color-black-base;
+        box-shadow: @box-shadow-1;
+      }
+
+      &:focus {
         box-shadow: @box-shadow-1;
       }
     }
@@ -116,6 +124,10 @@
         color: @basic-color-white-base;
         background: ~"@{theme-color-@{name}-dark}";
         border-color: ~"@{theme-color-@{name}-dark}";
+        box-shadow: ~"@{box-shadow-@{name}}";
+      }
+
+      &:focus {
         box-shadow: ~"@{box-shadow-@{name}}";
       }
     }
