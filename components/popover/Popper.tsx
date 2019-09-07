@@ -1,4 +1,4 @@
-import React, { createRef, Component, RefObject, ReactNode } from 'react';
+import React, { createRef, Component, RefObject, ReactNode, CSSProperties } from 'react';
 import classNames from 'classnames';
 import { TOP, LEFT, BOTTOM, RIGHT, START, END } from './constants';
 import {
@@ -26,7 +26,7 @@ const DEFAULT = {
 type BoundariesElement = 'window' | 'viewport' | HTMLElement;
 type BoundariesPadding = number;
 type Offset = number;
-export type Placement = [Direction, typeof START | typeof END];
+export type Placement = [Direction, typeof START | typeof END] | [Direction];
 
 interface Options {
   boundariesElement?: BoundariesElement;
@@ -46,6 +46,7 @@ interface Data {
 export interface Props {
   children: ReactNode | ReactNode[];
   arrow?: boolean;
+  style?: CSSProperties;
   theme?: 'dark' | 'light';
   options?: Options;
   placement?: Placement;
@@ -77,14 +78,14 @@ class Popper extends Component<Props, State> {
     offset: Offset;
   };
   constructor(props: Props) {
-    const { placement = [TOP], options = {} } = props;
+    const { placement = [TOP] as Placement, options = {} } = props;
 
     super(props);
     this.arrow = createRef();
     this.popper = createRef();
     this.options = Object.assign(DEFAULT, options);
     this.state = {
-      placement: placement as Placement,
+      placement,
       position: 'absolute',
       popper: {
         top: 0,
@@ -144,7 +145,7 @@ class Popper extends Component<Props, State> {
   }
 
   render() {
-    const { children, className, arrow, theme, onMouseLeave, onMouseEnter } = this.props;
+    const { children, className, arrow = true, theme, onMouseLeave, onMouseEnter, style } = this.props;
     const { placement, position } = this.state;
     const { top, left } = this.state.popper;
     const classes = classNames(prefixCls, {
@@ -157,11 +158,13 @@ class Popper extends Component<Props, State> {
         className={classes}
         onMouseLeave={onMouseLeave}
         onMouseEnter={onMouseEnter}
-        style={{ position, top, left, zIndex: 100000 }}
+        style={{ position, top, left, zIndex: 100000, ...style }}
         data-placement={placement.length === 2 ? placement.join('-') : placement[0]}
       >
         {arrow && this.renderArrow()}
-        {children}
+        <div className={`${prefixCls}-inner`}>
+          {children}
+        </div>
       </div>
     );
   }
@@ -171,8 +174,8 @@ class Popper extends Component<Props, State> {
    * @returns {Promise}
    */
   public update() {
-    const { placement = [TOP] } = this.props;
-    const offsets = this.getOffsets(placement as Placement);
+    const { placement = [TOP] as Placement } = this.props;
+    const offsets = this.getOffsets(placement);
     const boundaries = this.getBoundaries();
     const data = this.runModifiers({
       offsets: {
@@ -180,7 +183,7 @@ class Popper extends Component<Props, State> {
         arrow: this.state.arrow,
       },
       boundaries,
-      placement: placement as Placement,
+      placement,
       flipped: false,
     });
     const { popper, arrow } = data.offsets;
@@ -258,11 +261,11 @@ class Popper extends Component<Props, State> {
     const { position } = this.state;
     const popper = this.popper.current as HTMLDivElement;
     const target = this.props.getTarget();
-    const [placementPrefix] = placement;
+    const [direction] = placement;
     const isPopperFixed = position === 'fixed';
     const targetOffsets = getOffsetRectRelativeToCustomParent(target, popper, isPopperFixed);
     const popperRect = getOuterSizes(popper);
-    const isHorizontal = [LEFT, RIGHT].indexOf(placementPrefix) !== -1;
+    const isHorizontal = [LEFT, RIGHT].indexOf(direction) !== -1;
     const popperOffsets = {
       top: 0,
       left: 0,
@@ -274,10 +277,10 @@ class Popper extends Component<Props, State> {
 
     if (isHorizontal) {
       popperOffsets.top = targetOffsets.top + targetOffsets.height / 2 - popperRect.height / 2;
-      popperOffsets.left = placementPrefix === LEFT ? targetOffsets.left - popperRect.width : targetOffsets.right;
+      popperOffsets.left = direction === LEFT ? targetOffsets.left - popperRect.width : targetOffsets.right;
     } else {
       popperOffsets.left = targetOffsets.left + targetOffsets.width / 2 - popperRect.width / 2;
-      popperOffsets.top = placementPrefix === TOP ? targetOffsets.top - popperRect.height : targetOffsets.bottom;
+      popperOffsets.top = direction === TOP ? targetOffsets.top - popperRect.height : targetOffsets.bottom;
     }
     popperOffsets.right = popperOffsets.left + popperOffsets.width;
     popperOffsets.bottom = popperOffsets.top + popperOffsets.bottom;
@@ -411,17 +414,17 @@ class Popper extends Component<Props, State> {
    */
   private offset(data: Data) {
     const { offset } = this.options;
-    const [placementPrefix] = data.placement;
+    const [direction] = data.placement;
     const cloneData = cloneDeep(data);
     const { popper } = cloneData.offsets;
 
-    if (placementPrefix === LEFT) {
+    if (direction === LEFT) {
       popper.top = popper.top - offset;
-    } else if (placementPrefix === RIGHT) {
+    } else if (direction === RIGHT) {
       popper.top = popper.top + offset;
-    } else if (placementPrefix === TOP) {
+    } else if (direction === TOP) {
       popper.left = popper.left - offset;
-    } else if (placementPrefix === BOTTOM) {
+    } else if (direction === BOTTOM) {
       popper.left = popper.left + offset;
     }
 
@@ -519,14 +522,14 @@ class Popper extends Component<Props, State> {
    * @returns {Data}
    */
   private positionArrow(data: Data) {
-    if (!this.props.arrow) return data;
+    if (this.props.arrow === false) return data;
     const arrow = this.arrow.current as HTMLDivElement;
     const cloneData = cloneDeep(data);
     const {
-      placement: [placementPrefix],
+      placement: [direction],
       offsets: { target, popper },
     } = cloneData;
-    const isVertical = [LEFT, RIGHT].indexOf(placementPrefix) !== -1;
+    const isVertical = [LEFT, RIGHT].indexOf(direction) !== -1;
     const length = isVertical ? 'height' : 'width';
     const side = isVertical ? TOP : LEFT;
     const altSide = isVertical ? LEFT : TOP;
@@ -557,25 +560,25 @@ class Popper extends Component<Props, State> {
   private flip(data: Data) {
     if (data.flipped && isEqual(data.placement, this.props.placement)) return data;
     let cloneData = cloneDeep(data);
-    let [placementPrefix, placementSuffix] = cloneData.placement;
-    let placementOpposite = getOppositePlacement(placementPrefix);
-    const flipOrder = [placementPrefix, placementOpposite];
+    let [direction, position] = cloneData.placement;
+    let placementOpposite = getOppositePlacement(direction);
+    const flipOrder = [direction, placementOpposite];
 
     flipOrder.forEach((step, index) => {
-      if (placementPrefix !== step || flipOrder.length === index + 1) return;
-      const a = [RIGHT, BOTTOM].indexOf(placementPrefix) !== -1;
+      if (direction !== step || flipOrder.length === index + 1) return;
+      const a = [RIGHT, BOTTOM].indexOf(direction) !== -1;
       const { target, popper } = cloneData.offsets;
       const floor = Math.floor;
 
-      placementPrefix = cloneData.placement[0];
-      placementOpposite = getOppositePlacement(placementPrefix);
+      direction = cloneData.placement[0];
+      placementOpposite = getOppositePlacement(direction);
       if (
-        (a && floor(target[placementPrefix]) > floor(popper[placementOpposite])) ||
-        (!a && floor(target[placementPrefix]) < floor(popper[placementOpposite]))
+        (a && floor(target[direction]) > floor(popper[placementOpposite])) ||
+        (!a && floor(target[direction]) < floor(popper[placementOpposite]))
       ) {
         cloneData.flipped = true;
         cloneData.placement[0] = flipOrder[index + 1];
-        if (placementSuffix) cloneData.placement[1] = placementSuffix;
+        if (position) cloneData.placement[1] = position;
         cloneData.offsets.popper = this.getOffsets(cloneData.placement).popper;
         cloneData = this.runModifiers(cloneData);
       }
