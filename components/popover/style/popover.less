@@ -7,7 +7,7 @@
 
 // top
 .@{popover-prefix-top}-enter {
-  transform: translateY(-@offset);
+  transform: translateY(@offset);
   opacity: 0;
 }
 
@@ -23,14 +23,14 @@
 }
 
 .@{popover-prefix-top}-exit-active {
-  transform: translateY(-@offset);
+  transform: translateY(@offset);
   opacity: 0;
   transition: opacity .3s, transform .3s;
 }
 
 // left
 .@{popover-prefix-left}-enter {
-  transform: translateX(-@offset);
+  transform: translateX(@offset);
   opacity: 0;
 }
 
@@ -46,14 +46,14 @@
 }
 
 .@{popover-prefix-left}-exit-active {
-  transform: translateX(-@offset);
+  transform: translateX(@offset);
   opacity: 0;
   transition: opacity .3s, transform .3s;
 }
 
 // right
 .@{popover-prefix-right}-enter {
-  transform: translateX(@offset);
+  transform: translateX(-@offset);
   opacity: 0;
 }
 
@@ -69,14 +69,14 @@
 }
 
 .@{popover-prefix-right}-exit-active {
-  transform: translateX(@offset);
+  transform: translateX(-@offset);
   opacity: 0;
   transition: opacity .3s, transform .3s;
 }
 
 // bottom
 .@{popover-prefix-bottom}-enter {
-  transform: translateY(@offset);
+  transform: translateY(-@offset);
   opacity: 0;
 }
 
@@ -92,7 +92,7 @@
 }
 
 .@{popover-prefix-bottom}-exit-active {
-  transform: translateY(@offset);
+  transform: translateY(-@offset);
   opacity: 0;
   transition: opacity .3s, transform .3s;
 }

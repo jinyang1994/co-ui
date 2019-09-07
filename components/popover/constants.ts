@@ -7,3 +7,4 @@ export const BOTTOM = 'bottom';
 export const HOVER = 'hover';
 export const CLICK = 'click';
 export const FOCUS = 'focus';
+export const MANUAL = 'manual';

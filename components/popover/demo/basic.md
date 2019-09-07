@@ -19,6 +19,7 @@ import { Popover, Switch, Radio, Checkbox } from 'co-ui';
 function App() {
   const [placement, setPlacement] = React.useState(['top']);
   const [arrow, setArrow] = React.useState(true);
+  const [visible, setVisible] = React.useState(false);
   const [trigger, setTrigger] = React.useState(['click']);
 
   return (
@@ -57,13 +58,26 @@ function App() {
         >
           Focus
         </Checkbox>
+        <Checkbox value="manual">
+          Manual
+        </Checkbox>
       </Checkbox.Group>  
+      {
+        trigger.indexOf('manual') !== -1 && (
+          <>
+            <h5>Visible</h5>
+            <Switch value={visible} onChange={(value) => setVisible(value)} />
+          </>
+        )
+      }
       <h5>Show arrow:</h5>
       <Switch value={arrow} onChange={(value) => setArrow(value)} />
       <Popover 
         arrow={arrow}
+        visible={visible}
         placement={placement} 
         trigger={trigger}
+        onChange={(nextVisible) => setVisible(nextVisible)}
         content={<div className="content">popper</div>}       
       >
         <button 

@@ -1,22 +1,31 @@
-import React, { ReactElement, ReactNode } from 'react';
+import React, { CSSProperties, ReactElement, ReactNode } from 'react';
 import { findDOMNode } from 'react-dom';
 import { CSSTransition } from '../transition';
-import { TOP } from './constants';
+import { TOP, CLICK } from './constants';
 import Portal from '../portal';
 import Popper, { Props as PopperProps, Placement } from './Popper';
-import Trigger, { Props as TriggerProps, Trigger as TriggerType } from './Trigger';
+import Trigger, { Trigger as TriggerType } from './Trigger';
 import * as $ from '../_utils/dom';
+import { runCallback } from '../_utils/function';
 import { getPrefixCls } from '../_utils/config';
 
 const prefixCls = getPrefixCls('popover');
 
-export type Props = Pick<TriggerProps, 'trigger'> & Pick<PopperProps, 'arrow' | 'theme' | 'placement' | 'options' | 'getContainer'> & {
+export type Props = Pick<PopperProps, 'arrow' | 'theme' | 'placement' | 'options' | 'getContainer'> & {
   children: ReactElement;
   content: ReactNode | ReactNode[];
+  visible: boolean;
+  maskClosable?: boolean;
+  style?: CSSProperties;
+  trigger?: TriggerType | Array<TriggerType>;
   className?: string;
+  onChange?: (active: boolean) => void;
+}
+export interface State {
+  active: boolean;
 }
 
-class Popover extends React.Component<Props, any> {
+class Popover extends React.Component<Props, State> {
   private timer: ReturnType<typeof setTimeout> | null;
   private popperRef: Popper | null;
   constructor(props: Props) {
@@ -39,11 +48,15 @@ class Popover extends React.Component<Props, any> {
   }
 
   componentDidMount() {
-    document.addEventListener('click', this.handleBodyClick);
+    const { maskClosable = true } = this.props;
+
+    if (maskClosable) document.addEventListener('click', this.handleBodyClick);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('click', this.handleBodyClick);
+    const { maskClosable = true } = this.props;
+
+    if (maskClosable) document.removeEventListener('click', this.handleBodyClick);
   }
 
   handleBodyClick(e: Event) {
@@ -55,25 +68,28 @@ class Popover extends React.Component<Props, any> {
   }
 
   update(active: boolean) {
-    this.setState({ active });
+    const { onChange } = this.props;
+
+    if (this.timer) clearTimeout(this.timer);
+    this.timer = setTimeout(() => {
+      this.setState({ active }, () => runCallback(onChange, active));
+    }, 80);
   }
 
   render() {
-    const { children, content, className, trigger, placement = [TOP], getContainer, ...popperProps } = this.props;
+    const { children, content, trigger = [CLICK], placement = [TOP] as Placement, getContainer, visible, ...popperProps } = this.props;
     const { active } = this.state;
     const [direction] = placement;
+    const triggerList = Array.isArray(trigger) ? trigger : [trigger];
     const triggerProps = {
       active,
-      onTrigger: (nextActive: boolean) => {
-        if (this.timer) clearTimeout(this.timer);
-        this.timer = setTimeout(this.update, 80, nextActive);
-      },
-      trigger: trigger as TriggerType,
+      onTrigger: this.update,
+      trigger: triggerList as Array<TriggerType>,
     };
 
     return (
       <>
-        <Trigger {...triggerProps}>
+        <Trigger visible={visible} {...triggerProps}>
           {children}
         </Trigger>
         <CSSTransition
@@ -86,10 +102,9 @@ class Popover extends React.Component<Props, any> {
             <Trigger {...triggerProps}>
               <Popper
                 {...popperProps}
-                className={className}
                 ref={(ref) => this.popperRef = ref}
                 getContainer={getContainer}
-                placement={placement as Placement}
+                placement={placement}
                 getTarget={() => this.target as HTMLElement}
               >
                 {content}
