@@ -14,7 +14,7 @@ const prefixCls = getPrefixCls('popover');
 export type Props = Pick<PopperProps, 'arrow' | 'theme' | 'placement' | 'options' | 'getContainer'> & {
   children: ReactElement;
   content: ReactNode | ReactNode[];
-  visible: boolean;
+  visible?: boolean;
   maskClosable?: boolean;
   style?: CSSProperties;
   trigger?: TriggerType | Array<TriggerType>;
