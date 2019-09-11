@@ -15,6 +15,7 @@ export type Props = Pick<PopperProps, 'arrow' | 'theme' | 'placement' | 'options
   children: ReactElement;
   content: ReactNode | ReactNode[];
   visible?: boolean;
+  unmountOnExit?: boolean;
   maskClosable?: boolean;
   style?: CSSProperties;
   trigger?: TriggerType | Array<TriggerType>;
@@ -36,6 +37,7 @@ class Popover extends React.Component<Props, State> {
       active: false,
     };
     this.update = this.update.bind(this);
+    this.onEntering = this.onEntering.bind(this);
     this.handleBodyClick = this.handleBodyClick.bind(this);
   }
 
@@ -57,6 +59,7 @@ class Popover extends React.Component<Props, State> {
     const { maskClosable = true } = this.props;
 
     if (maskClosable) document.removeEventListener('click', this.handleBodyClick);
+    if (this.timer) clearTimeout(this.timer);
   }
 
   handleBodyClick(e: Event) {
@@ -76,8 +79,24 @@ class Popover extends React.Component<Props, State> {
     }, 80);
   }
 
+  onEntering() {
+    const { unmountOnExit = true } = this.props;
+
+    // if unmountOnExit is false, popper need update position
+    if (!unmountOnExit) (this.popperRef as Popper).update();
+  }
+
   render() {
-    const { children, content, trigger = [CLICK], placement = [TOP] as Placement, getContainer, visible, ...popperProps } = this.props;
+    const {
+      children,
+      content,
+      visible,
+      getContainer,
+      trigger = [CLICK],
+      placement = [TOP] as Placement,
+      unmountOnExit = true,
+      ...popperProps
+    } = this.props;
     const { active } = this.state;
     const [direction] = placement;
     const triggerList = Array.isArray(trigger) ? trigger : [trigger];
@@ -95,8 +114,16 @@ class Popover extends React.Component<Props, State> {
         <CSSTransition
           in={active}
           timeout={300}
-          classNames={`${prefixCls}-${direction}`}
-          unmountOnExit
+          classNames={{
+            enter: `${prefixCls}-${direction}-enter`,
+            enterActive: `${prefixCls}-${direction}-enter-active`,
+            exit: `${prefixCls}-${direction}-exit`,
+            exitActive: `${prefixCls}-${direction}-exit-active`,
+            exitDone: `${prefixCls}-exit-done`,
+          }}
+          mountOnEnter
+          unmountOnExit={unmountOnExit}
+          onEntering={this.onEntering}
         >
           <Portal getContainer={getContainer}>
             <Trigger {...triggerProps}>
