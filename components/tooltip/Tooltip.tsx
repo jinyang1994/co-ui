@@ -1,5 +1,8 @@
 import React, { ReactElement } from 'react';
 import Popover, { PopoverProps } from '../popover';
+import { getPrefixCls } from '../_utils/config';
+
+const prefixCls = getPrefixCls('tooltip');
 
 type Props = Pick<PopoverProps, 'theme' | 'placement'> & {
   title: ReactElement;
@@ -13,7 +16,7 @@ function Tooltip(props: Props) {
     <Popover
       arrow
       theme={theme}
-      content={title}
+      content={<div className={prefixCls}>{title}</div>}
       trigger={['hover']}
       placement={placement}
     >
