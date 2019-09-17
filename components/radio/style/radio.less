@@ -82,11 +82,18 @@
 
   &.@{radio-prefix}-disabled {
     cursor: not-allowed;
-    opacity: @disabled-opacity;
 
     .@{radio-prefix}-inner {
       background: @disabled-bg-color;
       border-color: @border-color;
+
+      &::before {
+        background: @disabled-color;
+      }
+    }
+
+    input {
+      cursor: not-allowed;
     }
   }
 
