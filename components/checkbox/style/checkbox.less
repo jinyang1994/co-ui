@@ -78,11 +78,14 @@
 
   &.@{checkbox-prefix}-disabled {
     cursor: not-allowed;
-    opacity: @disabled-opacity;
 
     .@{checkbox-prefix}-inner {
       background: @disabled-bg-color;
       border-color: @border-color;
+
+      &::before {
+        border-color: @disabled-color;
+      }
     }
   }
 
