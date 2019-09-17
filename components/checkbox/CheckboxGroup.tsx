@@ -1,7 +1,7 @@
 import React, { ChangeEvent, CSSProperties, ReactElement, ReactChild } from 'react';
 import classNames from 'classnames';
 import Checkbox, { Props as CheckboxProps } from './Checkbox';
-import { transform } from '../_utils/children';
+import { transformDeep } from '../_utils/children';
 import { runCallback } from '../_utils/function';
 import { toString } from '../_utils/string';
 import { getPrefixCls } from '../_utils/config';
@@ -44,7 +44,7 @@ function CheckboxGroup(props: Props) {
   return (
     <div className={classes} style={style}>
       {
-        transform<CheckboxProps>(
+        transformDeep<CheckboxProps>(
           children,
           (checkboxProps) => ({
             name,

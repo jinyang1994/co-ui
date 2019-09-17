@@ -1,7 +1,7 @@
 import React, { ReactChild, ChangeEvent, CSSProperties, ReactElement } from 'react';
 import classNames from 'classnames';
 import Radio, { Props as RadioProps } from './Radio';
-import { transform } from '../_utils/children';
+import { transformDeep } from '../_utils/children';
 import { runCallback } from '../_utils/function';
 import { getPrefixCls } from '../_utils/config';
 
@@ -27,7 +27,7 @@ function RadioGroup(props: Props) {
   return (
     <div className={classes} style={style}>
       {
-        transform<RadioProps>(
+        transformDeep<RadioProps>(
           children,
           (radioProps) => ({
             name,

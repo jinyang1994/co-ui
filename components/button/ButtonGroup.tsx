@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, Children, ReactNode, cloneElement } from 'react';
+import React, { HTMLAttributes, Children, ReactNode, cloneElement, ReactElement } from 'react';
 import classNames from 'classnames';
 import Button, { Size } from './Button';
 import { getPrefixCls } from '../_utils/config';
@@ -6,7 +6,7 @@ import { getPrefixCls } from '../_utils/config';
 const prefixCls = getPrefixCls('btn-group');
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
-  children: React.ReactElement<Button>[];
+  children: ReactElement<Button>[];
   size?: Size;
 }
 
